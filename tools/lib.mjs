@@ -8,12 +8,27 @@ import { join, dirname } from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const OUT = join(ROOT, 'docs');
+/**
+ * Свой домен.
+ * null  → сайт живёт в подпапке: alexmfv-w.github.io/<REPO>/
+ * 'example.ru' → сайт живёт в корне домена; сборка сама поменяет все пути
+ *                и положит docs/CNAME. Больше ничего править не нужно.
+ */
+const DOMAIN = null;
+
+/** Логин на GitHub и имя репозитория. От имени репозитория зависит адрес сайта:
+ *  github.com/alexmfv-w/budarova-keramic  ->  alexmfv-w.github.io/budarova-keramic/
+ *  Переименуете репозиторий — поменяйте REPO и пересоберите, иначе стили и фото отвалятся. */
+const USER = 'alexmfv-w';
+const REPO = 'budarova-keramic';
+
 const SITE = {
   name: 'Бударова-керамика',
   title: 'Бударова-керамика — авторская керамика из Краснодара',
   desc: 'Триподы майя для какао, сосуды со мхом, зеркала в керамической раме. Ручная работа, каждая вещь в одном экземпляре. Краснодар.',
-  base: '/keramika',
-  origin: 'https://alexmfv-w.github.io',
+  domain: DOMAIN,
+  base: DOMAIN ? '' : `/${REPO}`,
+  origin: DOMAIN ? `https://${DOMAIN}` : `https://${USER}.github.io`,
   tg: 'https://t.me/Budarova_keramika',
   max: 'https://max.ru/channel_kistpero',
   tel: '+79530716785',

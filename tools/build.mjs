@@ -510,7 +510,8 @@ function main() {
   const started = Date.now();
   if (existsSync(OUT)) {
     for (const entry of readdirSync(OUT)) {
-      if (entry !== 'img') rmSync(join(OUT, entry), { recursive: true, force: true });
+      // img и CNAME не трогаем: первое долго собирается, второе держит свой домен
+      if (entry !== 'img' && entry !== 'CNAME') rmSync(join(OUT, entry), { recursive: true, force: true });
     }
   }
 
@@ -538,6 +539,17 @@ function main() {
   favicon();
   buildSitemap(paths);
   write('.nojekyll', '');
+
+  // Свой домен: CNAME пишем из настроек, чтобы он не расходился с путями в HTML
+  const cnamePath = join(OUT, 'CNAME');
+  if (SITE.domain) {
+    writeFileSync(cnamePath, SITE.domain + '\n');
+  } else if (existsSync(cnamePath)) {
+    const current = readFileSync(cnamePath, 'utf8').trim();
+    console.warn(`\nВНИМАНИЕ: в docs/CNAME указан домен ${current}, но DOMAIN в tools/lib.mjs = null.`);
+    console.warn(`Сейчас все пути собраны для /keramika и на своём домене работать не будут.`);
+    console.warn(`Впишите домен в DOMAIN и пересоберите.\n`);
+  }
 
   const missing = [];
   for (const item of items) {

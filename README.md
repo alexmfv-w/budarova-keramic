@@ -2,7 +2,7 @@
 
 Статическая витрина-каталог. Продажа идёт в Telegram и MAX, на сайте нет корзины и оплаты.
 
-**Адрес после публикации:** `https://alexmfv-w.github.io/keramika/`
+**Адрес после публикации:** `https://alexmfv-w.github.io/budarova-keramic/`
 
 ## Быстрый старт
 
@@ -11,12 +11,12 @@ node tools/build.mjs                 # собрать сайт в docs/
 bash tools/build-images.sh           # пересобрать картинки (нужен cwebp)
 ```
 
-Локальный просмотр — сайт живёт в подпапке `/keramika`, поэтому просто открыть файл не получится:
+Локальный просмотр — сайт живёт в подпапке `/budarova-keramic`, поэтому просто открыть файл не получится:
 
 ```bash
-mkdir -p /tmp/preview && ln -sfn "$PWD/docs" /tmp/preview/keramika
+mkdir -p /tmp/preview && ln -sfn "$PWD/docs" /tmp/preview/budarova-keramic
 cd /tmp/preview && python3 -m http.server 8747
-# http://localhost:8747/keramika/
+# http://localhost:8747/budarova-keramic/
 ```
 
 ## Что где лежит
