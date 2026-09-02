@@ -1,0 +1,163 @@
+/* ── Пояс: сигнатурный элемент ── */
+.belt{height:20px; background:var(--belt) repeat-x; background-size:auto 20px}
+.belt-thin{height:8px; background:var(--belt-thin) repeat-x; background-size:auto 8px}
+
+/* ── Кнопки ── */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  min-height:50px; padding:0 1.375rem; font-weight:500; text-decoration:none;
+  border:2px solid var(--brown); background:transparent; color:var(--brown);
+  font-family:inherit; font-size:1rem; cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.btn:hover{background:var(--brown); color:var(--paper)}
+.btn-solid{background:var(--clay); border-color:var(--clay); color:var(--paper)}
+.btn-solid:hover{background:var(--brown); border-color:var(--brown)}
+.btn-light{border-color:var(--paper); color:var(--paper)}
+.btn-light:hover{background:var(--paper); color:var(--clay)}
+.link-more{
+  display:inline-flex; align-items:center; min-height:44px;
+  font-weight:600; color:var(--clay); text-decoration:none;
+}
+.link-more:hover{text-decoration:underline}
+
+/* ── Шапка ── */
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0}
+.brand{
+  font-family:Unbounded,sans-serif; font-weight:600; font-size:1.0625rem;
+  letter-spacing:-.01em; text-decoration:none;
+}
+.brand i{font-style:normal; color:var(--clay)}
+.nav-toggle{
+  display:inline-flex; align-items:center; gap:.5rem; min-height:48px; padding:0 .875rem;
+  background:transparent; border:2px solid var(--brown); color:var(--brown);
+  font:500 .9375rem/1 "Golos Text",sans-serif; cursor:pointer;
+}
+.nav{display:none}
+.nav a[aria-current="page"]{color:var(--clay); font-weight:600}
+@media (min-width:58rem){
+  .nav-toggle{display:none}
+  .nav{display:flex; gap:1.5rem; font-size:.9375rem; font-weight:500}
+  .nav a{text-decoration:none; padding:.5rem 0}
+  .nav a:hover{color:var(--clay)}
+}
+/* мобильная панель меню */
+.nav-panel{
+  position:fixed; inset:0; z-index:60; background:var(--cream);
+  padding:1rem 1.25rem 2rem; display:flex; flex-direction:column;
+}
+.nav-panel[hidden]{display:none}
+.nav-panel-top{display:flex; justify-content:flex-end}
+.nav-panel a{
+  display:flex; align-items:center; min-height:56px;
+  font-family:Unbounded,sans-serif; font-size:1.25rem; text-decoration:none;
+  border-bottom:1px solid rgba(59,36,25,.15);
+}
+.nav-panel a[aria-current="page"]{color:var(--clay)}
+
+/* ── Карточка работы ── */
+.grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem 1rem}
+@media (min-width:44rem){ .grid{grid-template-columns:repeat(3,1fr); gap:2rem 1.5rem} }
+@media (min-width:64rem){ .grid{grid-template-columns:repeat(4,1fr)} }
+.card{
+  position:relative; text-decoration:none; background:var(--paper);
+  display:flex; flex-direction:column; transition:transform .18s;
+}
+.card:hover,.card:focus-visible{transform:translateY(-4px)}
+.card[hidden]{display:none}
+.card img{width:100%; aspect-ratio:4/5; object-fit:cover}
+.card-body{padding:.875rem .875rem 1rem}
+.card-title{font-family:Unbounded,sans-serif; font-weight:400; font-size:.9375rem; line-height:1.3; display:block}
+.card-meta{display:block; margin-top:.5rem; font-size:.875rem; color:var(--brown-soft)}
+.card-price{display:block; margin-top:.25rem; font-weight:600; color:var(--clay)}
+.badge{
+  position:absolute; inset-block-start:.625rem; inset-inline-start:.625rem;
+  background:var(--ochre); color:var(--brown); font-size:.6875rem; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase; padding:.3rem .5rem;
+}
+.badge-sold{background:var(--brown); color:var(--cream)}
+
+/* ── Фильтры ── */
+.chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.75rem}
+.chip{
+  font:500 .9375rem/1 "Golos Text",sans-serif; min-height:44px; padding:0 1rem;
+  background:transparent; color:var(--brown); border:2px solid var(--brown); cursor:pointer;
+}
+.chip:hover{background:var(--paper)}
+.chip[aria-pressed="true"]{background:var(--brown); color:var(--cream)}
+
+/* ── Лента «фото + текст» ── */
+.ribbon{display:grid; gap:0; background:var(--paper)}
+.ribbon img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.ribbon-body{padding:1.75rem 1.5rem 2rem}
+.ribbon p{margin-top:.875rem; color:var(--brown-soft); max-width:44ch}
+@media (min-width:52rem){
+  .ribbon{grid-template-columns:1fr 1fr; align-items:center}
+  .ribbon img{aspect-ratio:4/3; height:auto; max-block-size:34rem}
+  .ribbon-body{padding:3rem}
+  .ribbon.flip img{order:2}
+}
+.note-ochre{
+  margin-top:.75rem; padding-left:.875rem; border-left:3px solid var(--ochre);
+  font-size:.9375rem; color:var(--brown-soft);
+}
+
+/* ── Цветная плашка внахлёст на фото ── */
+.panel-figure{margin:0}
+.panel-figure img{width:100%; aspect-ratio:4/5; object-fit:cover}
+.panel-body{position:relative; margin:-3rem 1.25rem 0; padding:1.75rem 1.5rem 2rem}
+.panel-clay{background:var(--clay); color:var(--cream)}
+.panel-clay .eyebrow{color:var(--ochre)}
+.panel-glaze{background:var(--glaze); color:var(--paper)}
+.panel-glaze .eyebrow{color:#BFE6DF}
+.panel-quote{
+  font-family:Unbounded,sans-serif; font-weight:400;
+  font-size:clamp(1.125rem,4.2vw,1.5rem); line-height:1.35;
+  margin-top:1.25rem; padding-left:1rem; border-left:3px solid var(--ochre);
+}
+.panel-body p.txt{margin-top:1.25rem; opacity:.93; max-width:44ch}
+.panel-body .btn{margin-top:1.75rem}
+@media (min-width:58rem){
+  .panel{display:grid; grid-template-columns:1fr 1fr; align-items:center}
+  .panel-figure{grid-column:1; grid-row:1}
+  .panel-figure img{max-block-size:34rem}
+  .panel-body{grid-column:2; grid-row:1; margin:0 0 0 -3rem; padding:3rem; z-index:1}
+}
+
+/* ── Список контактов ── */
+.clist{list-style:none; padding:0; margin:1.75rem 0 0; display:grid; gap:.75rem}
+.clist a{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  min-height:56px; padding:0 1.125rem; background:var(--paper);
+  text-decoration:none; font-weight:500; border:2px solid transparent;
+}
+.clist a:hover{border-color:var(--clay); color:var(--clay)}
+.clist span{color:var(--brown-soft); font-size:.875rem}
+.clist a:hover span{color:var(--clay)}
+@media (min-width:52rem){ .clist{grid-template-columns:repeat(3,1fr)} }
+
+/* ── Закреплённая связь на мобильной ── */
+.sticky-cta{
+  position:fixed; inset-inline:0; inset-block-end:0; z-index:50;
+  display:flex; gap:1px; background:var(--brown);
+  transform:translateY(110%); transition:transform .25s;
+}
+.sticky-cta.is-visible{transform:none}
+.sticky-cta a{
+  flex:1 1 0; min-height:56px; display:flex; align-items:center; justify-content:center;
+  background:var(--clay); color:var(--paper); text-decoration:none;
+  font-weight:600; font-size:.9375rem;
+}
+.sticky-cta a:hover{background:var(--clay-dark)}
+@media (min-width:58rem){ .sticky-cta{display:none} }
+
+/* ── Подвал ── */
+.footer{background:var(--brown); color:var(--cream); padding:var(--step) 0 2rem; margin-top:var(--step)}
+.footer a{color:inherit; text-decoration:none}
+.footer a:hover{color:var(--ochre)}
+.footer-grid{display:grid; gap:2rem}
+.footer h2{font-size:1.125rem; font-family:Unbounded,sans-serif; font-weight:600}
+.footer ul{list-style:none; padding:0; margin:1rem 0 0; display:grid; gap:.5rem}
+.footer li a{display:inline-flex; align-items:center; min-height:44px}
+.footer-note{margin-top:2.5rem; font-size:.875rem; opacity:.7}
+@media (min-width:52rem){ .footer-grid{grid-template-columns:2fr 1fr 1fr} }

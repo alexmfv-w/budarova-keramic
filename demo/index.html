@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Этап 2 — три направления дизайна</title>
+<style>
+:root{--bg:#101214;--card:#1A1D20;--line:#2C3135;--fg:#E8E6E1;--dim:#9AA0A6;--acc:#D2622E}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,sans-serif}
+.wrap{width:min(100% - 2rem,84rem);margin-inline:auto;padding-block:2rem 4rem}
+h1{font-size:clamp(1.5rem,5vw,2rem);margin:0 0 .5rem}
+.lead{color:var(--dim);margin:0 0 2rem;max-width:60ch}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.tabs button{font:inherit;font-size:.9375rem;min-height:44px;padding:0 1rem;background:var(--card);color:var(--fg);border:1px solid var(--line);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:#140D08}
+.row{display:grid;gap:1.5rem}
+.row-hero{margin-bottom:2.5rem}
+.sub{color:var(--dim);font-size:.9375rem;margin:0 0 1rem}
+.pane-hero{border-color:var(--acc)}
+@media (min-width:60rem){.row{grid-template-columns:repeat(3,1fr)}.row-hero{grid-template-columns:1fr}}
+.pane{background:var(--card);border:1px solid var(--line);padding:1rem;display:flex;flex-direction:column}
+.pane h2{font-size:1.125rem;margin:0 0 .25rem}
+.pane .tag{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 .5rem}
+.pane p{color:var(--dim);font-size:.9375rem;margin:0 0 1rem}
+.frame{border:1px solid var(--line);background:#000;overflow:hidden;margin-bottom:1rem}
+.frame iframe{display:block;border:0;width:390px;height:760px;transform-origin:0 0}
+.frame.wide iframe{width:1400px;height:900px;transform:scale(.36)}
+.frame.wide{height:324px}
+.pane a{display:inline-flex;align-items:center;min-height:44px;color:var(--acc);font-size:.9375rem;margin-top:auto}
+.note{margin-top:2.5rem;color:var(--dim);font-size:.9375rem;max-width:70ch}
+.note code{background:var(--card);padding:.1em .4em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Этап 2 — направление собрано</h1>
+  <p class="lead">Наверху — сведённый вариант В2 с учётом отзыва. Ниже — исходные три, для сравнения. По умолчанию показана мобильная ширина 390&nbsp;px; переключатель показывает те же страницы на десктопе.</p>
+
+  <div class="tabs">
+    <button type="button" data-mode="mobile" aria-pressed="true">Мобильная 390 px</button>
+    <button type="button" data-mode="desktop" aria-pressed="false">Десктоп 1400 px</button>
+  </div>
+
+  <div class="row row-hero">
+  <div class="pane pane-hero">
+      <p class="tag">Вариант В2 · сведённый</p>
+      <h2>«Пояс» + герой из А + обжиг и мастер из Б</h2>
+      <p>Основа — вариант В. Слоган и композиция первого экрана из А, раздел «Из последнего обжига» с фильтрами и раздел о мастере из Б. Между героем и первой лентой добавлена цветная полоса-манифест, чтобы два фото не сливались.</p>
+      <div class="frame"><iframe src="c2-poyas.html" title="Вариант В2" loading="lazy"></iframe></div>
+      <a href="c2-poyas.html" target="_blank" rel="noopener">Открыть отдельно →</a>
+  </div>
+  </div>
+
+  <p class="sub">Исходные три варианта — для сравнения:</p>
+
+  <div class="row">
+    <div class="pane">
+      <p class="tag">Вариант А</p>
+      <h2>Сграффито</h2>
+      <p>Светлая галерея. Песочный фон, капительный шрифт Forum, процарапанная линия-разделитель — цитата с самой керамики. Тихо, работы говорят сами.</p>
+      <div class="frame"><iframe src="a-sgraffito.html" title="Вариант А" loading="lazy"></iframe></div>
+      <a href="a-sgraffito.html" target="_blank" rel="noopener">Открыть отдельно →</a>
+    </div>
+    <div class="pane">
+      <p class="tag">Вариант Б</p>
+      <h2>Обжиг</h2>
+      <p>Тёмный, кинематографичный. Дымный фон, свет как от свечи вокруг работ, лента каталога с прокруткой. Ритуал, вечер, огонь печи.</p>
+      <div class="frame"><iframe src="b-obzhig.html" title="Вариант Б" loading="lazy"></iframe></div>
+      <a href="b-obzhig.html" target="_blank" rel="noopener">Открыть отдельно →</a>
+    </div>
+    <div class="pane">
+      <p class="tag">Вариант В</p>
+      <h2>Пояс</h2>
+      <p>Светлый и графичный. Орнаментальный пояс с трипода опоясывает разделы, ленты вместо сеток, заголовок — прямая цитата мастера.</p>
+      <div class="frame"><iframe src="c-poyas.html" title="Вариант В" loading="lazy"></iframe></div>
+      <a href="c-poyas.html" target="_blank" rel="noopener">Открыть отдельно →</a>
+    </div>
+  </div>
+
+  <p class="note">Фото — реальные, из <code>old_useful_materials/photos</code>, сжатые в WebP: было 62 МБ на кадр, стало 40–180 КБ. Тексты — черновые, собраны из телеграм-канала; утверждаются на Этапе 4.</p>
+</div>
+<script>
+const btns=document.querySelectorAll('.tabs button');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  const mode=b.dataset.mode;
+  btns.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+  document.querySelectorAll('.frame').forEach(f=>f.classList.toggle('wide',mode==='desktop'));
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вариант Б — «Обжиг» · Бударова-керамика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --soot:#15100C; --soot2:#1E1712; --soot3:#2A211A;
+  --cream:#EFE2CB; --dim:#A2907A;
+  --ember:#D2622E; --ochre:#E4A73F; --glaze:#3E9A8E;
+  --step:clamp(3.5rem,11vw,7rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--soot); color:var(--cream);
+  font:300 1.0625rem/1.7 Onest,system-ui,sans-serif; overflow-x:hidden;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Prata,Georgia,serif; font-weight:400; text-wrap:balance; margin:0; line-height:1.15}
+p{text-wrap:pretty; margin:0}
+:focus-visible{outline:2px solid var(--ochre); outline-offset:4px}
+.wrap{width:min(100% - 2.5rem, 72rem); margin-inline:auto}
+.eyebrow{font-size:.75rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin:0 0 1rem}
+.rule{height:1px; border:0; background:linear-gradient(90deg,var(--ember),transparent 65%); margin:var(--step) 0}
+
+/* шапка */
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 0}
+.brand{font-family:Prata,serif; font-size:1.25rem; letter-spacing:.04em; text-decoration:none}
+.nav{display:none}
+@media (min-width:56rem){
+  .nav{display:flex; gap:2rem; font-size:.875rem; letter-spacing:.06em; text-transform:uppercase}
+  .nav a{text-decoration:none; color:var(--dim); padding-block:.5rem}
+  .nav a:hover{color:var(--cream)}
+}
+
+/* СИГНАТУРА: свет из темноты */
+.glow{position:relative; isolation:isolate}
+.glow::before{
+  content:""; position:absolute; z-index:-1; inset:-10%;
+  background:radial-gradient(58% 48% at 50% 42%, rgba(226,150,70,.30), rgba(210,98,46,.10) 45%, transparent 72%);
+  pointer-events:none;
+}
+
+/* hero */
+.hero{padding-block:1rem var(--step)}
+.hero-img{position:relative}
+.hero-img img{width:100%; aspect-ratio:4/3; object-fit:cover; filter:brightness(.86) contrast(1.06) saturate(1.05)}
+.hero-img::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(21,16,12,.45) 0%,transparent 30%,rgba(21,16,12,.92) 96%)}
+.hero-text{margin-top:-4rem; position:relative; z-index:1; padding-inline:0}
+.hero h1{font-size:clamp(2.25rem,10vw,4.5rem)}
+.hero h1 em{font-style:normal; color:var(--ochre)}
+.hero-sub{margin-top:1.25rem; color:var(--dim); max-width:38ch; font-size:1.0625rem}
+.actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:2rem}
+.btn{display:inline-flex; align-items:center; min-height:50px; padding:0 1.5rem; text-decoration:none; font-size:.9375rem; letter-spacing:.04em; border:1px solid var(--ember); transition:background .2s,color .2s}
+.btn-solid{background:var(--ember); color:#170F09}
+.btn-solid:hover{background:var(--ochre); border-color:var(--ochre)}
+.btn-ghost{color:var(--ember)}
+.btn-ghost:hover{background:var(--ember); color:#170F09}
+@media (min-width:56rem){
+  .hero-img img{aspect-ratio:21/9}
+  .hero-text{margin-top:-7rem; max-width:44rem}
+  .hero-sub{font-size:1.1875rem}
+}
+
+/* лента каталога со скролл-снапом */
+.sechead{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.5rem 1.5rem; margin-bottom:2rem}
+.sechead h2{font-size:clamp(1.75rem,6.5vw,2.75rem)}
+.sechead a{font-size:.875rem; color:var(--dim); text-decoration:none; letter-spacing:.06em; text-transform:uppercase}
+.sechead a:hover{color:var(--ember)}
+.rail{
+  display:grid; grid-auto-flow:column; grid-auto-columns:minmax(15rem,72vw);
+  gap:1.25rem; overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain;
+  padding-bottom:1rem; scrollbar-width:thin; scrollbar-color:var(--soot3) transparent;
+}
+.rail::-webkit-scrollbar{height:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--soot3)}
+.item{scroll-snap-align:start; text-decoration:none; display:block}
+.item img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:brightness(.94)}
+.item:hover img,.item:focus-visible img{filter:brightness(1.06)}
+.item-title{font-family:Prata,serif; font-size:1.1875rem; margin-top:1rem; display:block}
+.item-meta{display:flex; justify-content:space-between; gap:1rem; margin-top:.375rem; font-size:.875rem; color:var(--dim)}
+.item-meta b{font-weight:500; color:var(--ochre)}
+@media (min-width:44rem){ .rail{grid-auto-columns:minmax(16rem,30%)} }
+
+/* полноширинный разворот */
+.spread{position:relative; margin-block:var(--step)}
+.spread img{width:100%; aspect-ratio:3/4; object-fit:cover; filter:brightness(.8)}
+.spread-text{position:relative; margin-top:-5rem; z-index:1; background:var(--soot); padding:1.75rem 1.25rem 0}
+.spread h2{font-size:clamp(1.75rem,7vw,3rem)}
+.spread p{margin-top:1.25rem; color:var(--dim); max-width:46ch}
+.pull{font-family:Prata,serif; font-size:clamp(1.25rem,4.5vw,1.75rem); color:var(--cream); line-height:1.35; margin-top:2rem; padding-left:1.25rem; border-left:2px solid var(--ember)}
+@media (min-width:56rem){
+  .spread{display:grid; grid-template-columns:1.15fr 1fr; gap:0; align-items:center}
+  .spread img{aspect-ratio:4/3}
+  .spread-text{margin:0 0 0 -6rem; background:var(--soot); padding:3rem; max-width:34rem}
+}
+
+/* встречи */
+.meet{border-top:1px solid var(--soot3); border-bottom:1px solid var(--soot3); padding-block:var(--step)}
+.meet h2{font-size:clamp(1.75rem,6.5vw,2.75rem)}
+.meet p{margin-top:1.25rem; color:var(--dim); max-width:50ch}
+.meet .btn{margin-top:2rem}
+
+/* контакты */
+.contacts{padding-block:var(--step)}
+.contacts h2{font-size:clamp(1.75rem,6.5vw,2.75rem)}
+.clist{list-style:none; padding:0; margin:2rem 0 0}
+.clist a{display:flex; align-items:center; justify-content:space-between; min-height:56px; font-family:Prata,serif; font-size:1.25rem; text-decoration:none; border-bottom:1px solid var(--soot3)}
+.clist a:hover{color:var(--ochre)}
+.clist span{font-family:Onest,sans-serif; font-size:.8125rem; letter-spacing:.14em; text-transform:uppercase; color:var(--dim)}
+.ship{margin-top:2.5rem; font-size:.9375rem; color:var(--dim); max-width:48ch}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+  <a class="brand" href="#">Бударова · керамика</a>
+  <nav class="nav"><a href="#catalog">Работы</a><a href="#story">О мастере</a><a href="#meet">Встречи</a><a href="#contacts">Контакты</a></nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-img glow">
+    <img src="img/hero-tripods.webp" srcset="img/hero-tripods-sm.webp 800w, img/hero-tripods.webp 1600w"
+         sizes="100vw" width="1600" height="900" fetchpriority="high"
+         alt="Керамические триподы с росписью, сложенные горкой">
+  </div>
+  <div class="wrap hero-text">
+    <p class="eyebrow">Краснодар · ручная работа</p>
+    <h1>Какао пьют<br>из <em>трипода</em></h1>
+    <p class="hero-sub">Майя пили напиток богов из чаш на трёх ножках. Я делаю такие же: круг, роспись по сырой глине, обжиг. Каждая чаша — одна.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="#catalog">Смотреть работы</a>
+      <a class="btn btn-ghost" href="https://t.me/Budarova_keramika">Написать мастеру</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="catalog" aria-labelledby="cat-h">
+  <div class="sechead"><h2 id="cat-h">Из последнего обжига</h2><a href="#contacts">Весь каталог</a></div>
+  <div class="rail">
+    <a class="item" href="#">
+      <img src="img/tripod.webp" srcset="img/tripod-sm.webp 500w, img/tripod.webp 1000w" sizes="(min-width:44rem) 30vw, 72vw" width="1000" height="1250" loading="lazy" alt="Трипод с треугольным орнаментом">
+      <span class="item-title">Трипод «Зигзаг»</span><span class="item-meta">200 мл <b>1500 ₽</b></span>
+    </a>
+    <a class="item" href="#">
+      <img src="img/tripods-wide.webp" srcset="img/tripods-wide-sm.webp 800w, img/tripods-wide.webp 1600w" sizes="(min-width:44rem) 30vw, 72vw" width="1600" height="1000" loading="lazy" alt="Набор триподов">
+      <span class="item-title">Трипод «Птицы»</span><span class="item-meta">400 мл <b>1500 ₽</b></span>
+    </a>
+    <a class="item" href="#">
+      <img src="img/mharium.webp" srcset="img/mharium-sm.webp 500w, img/mharium.webp 1000w" sizes="(min-width:44rem) 30vw, 72vw" width="1000" height="1250" loading="lazy" alt="Мхариум со мхом">
+      <span class="item-title">Мхариум красный</span><span class="item-meta">со мхом <b>по запросу</b></span>
+    </a>
+    <a class="item" href="#">
+      <img src="img/pot-birds.webp" srcset="img/pot-birds-sm.webp 500w, img/pot-birds.webp 1000w" sizes="(min-width:44rem) 30vw, 72vw" width="1000" height="1250" loading="lazy" alt="Горшок с бирюзовой глазурью">
+      <span class="item-title">Горшок «Полёт»</span><span class="item-meta">глазурь <b>по запросу</b></span>
+    </a>
+    <a class="item" href="#">
+      <img src="img/mirror-jaguar.webp" srcset="img/mirror-jaguar-sm.webp 500w, img/mirror-jaguar.webp 1000w" sizes="(min-width:44rem) 30vw, 72vw" width="1000" height="1250" loading="lazy" alt="Зеркало в керамической раме с ягуаром">
+      <span class="item-title">Зеркало «Ягуар»</span><span class="item-meta">продано <b>под заказ</b></span>
+    </a>
+    <a class="item" href="#">
+      <img src="img/candlestick.webp" srcset="img/candlestick-sm.webp 500w, img/candlestick.webp 1000w" sizes="(min-width:44rem) 30vw, 72vw" width="1000" height="1250" loading="lazy" alt="Керамический подсвечник">
+      <span class="item-title">Подсвечник</span><span class="item-meta">интерьер <b>по запросу</b></span>
+    </a>
+  </div>
+</section>
+
+<section class="wrap spread glow" id="story">
+  <img src="img/master.webp" srcset="img/master-sm.webp 600w, img/master.webp 1200w" sizes="(min-width:56rem) 55vw, 100vw" width="1200" height="900" loading="lazy" alt="Алёна Бударова держит керамическую скульптуру индейца">
+  <div class="spread-text">
+    <p class="eyebrow">О мастере</p>
+    <h2>Алёна Бударова</h2>
+    <p>Художник-керамист из Краснодара, основатель изостудии «Кисть и Перо». Керамика — отдельная линия работы: триподы, мхариумы, зеркала, посуда.</p>
+    <p class="pull">«Совершенству в керамике нет предела».</p>
+  </div>
+</section>
+
+<section class="wrap meet" id="meet">
+  <p class="eyebrow">Встречи</p>
+  <h2>Мастер-классы и какао-церемонии</h2>
+  <p>Занятия по керамике для детей и взрослых в студии в Краснодаре. И какао-церемонии — там триподы наконец делают то, ради чего их придумали.</p>
+  <a class="btn btn-ghost" href="https://t.me/Budarova_keramika">Узнать даты</a>
+</section>
+
+<section class="wrap contacts" id="contacts">
+  <p class="eyebrow">Связь</p>
+  <h2>Напишите — договоримся</h2>
+  <ul class="clist">
+    <li><a href="https://t.me/Budarova_keramika">Telegram <span>канал и заказы</span></a></li>
+    <li><a href="https://max.ru/channel_kistpero">MAX <span>канал и магазин</span></a></li>
+    <li><a href="tel:+79530716785">+7 953 071 67 85 <span>звонок мастеру</span></a></li>
+  </ul>
+  <p class="ship">Отправляю Почтой России, СДЭК и Ozon. Доставка не входит в стоимость и оплачивается отдельно. Самовывоз в Краснодаре — по договорённости.</p>
+</section>
+</main>
+</body>
+</html>

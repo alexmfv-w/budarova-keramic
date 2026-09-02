@@ -1,0 +1,139 @@
+/* ── ГЛАВНАЯ: первый экран ── */
+.hero{position:relative}
+.hero-figure{margin:0}
+.hero-figure img{width:100%; aspect-ratio:16/11; object-fit:cover}
+.hero-body{
+  position:relative; background:var(--paper); margin:-3rem 1.25rem 0;
+  padding:1.75rem 1.5rem 2rem; border-top:6px solid var(--clay);
+}
+.hero-body h1{font-size:clamp(2rem,8.5vw,3.5rem)}
+.hero-body h1 mark{background:none; color:var(--clay)}
+.hero-sub{margin-top:1.125rem; color:var(--brown-soft); max-width:38ch}
+.hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem}
+@media (min-width:58rem){
+  .hero{display:grid; grid-template-columns:1fr 1fr; align-items:end}
+  .hero-figure{grid-column:1/-1; grid-row:1}
+  .hero-figure img{aspect-ratio:16/7}
+  .hero-body{grid-column:1; grid-row:1; margin:0 0 -3.5rem 2.5rem; padding:2.75rem; max-width:34rem; z-index:2}
+}
+
+/* ── Полоса-манифест ── */
+.manifest{background:var(--clay); color:var(--cream); padding:var(--step) 0}
+.manifest-in{display:grid; gap:1.5rem}
+.manifest q{
+  font-family:Unbounded,sans-serif; font-weight:400;
+  font-size:clamp(1.25rem,4.8vw,1.875rem); line-height:1.35; quotes:"«" "»";
+}
+.manifest p{opacity:.9; max-width:44ch}
+@media (min-width:58rem){
+  .manifest{padding-top:calc(var(--step) + 3.5rem)}
+  .manifest-in{grid-template-columns:1.25fr 1fr; gap:3rem; align-items:start}
+}
+
+/* ── Заголовок секции с пояснением справа ── */
+.sechead{display:grid; gap:.75rem; margin-bottom:1.5rem}
+.sechead-note{font-size:.9375rem; color:var(--brown-soft)}
+@media (min-width:52rem){ .sechead{grid-template-columns:1fr auto; align-items:end} }
+
+.section{padding-block:var(--step)}
+.section-tight{padding-block:0 var(--step)}
+
+/* ── КАТАЛОГ ── */
+.catalog-intro{max-width:52ch; color:var(--brown-soft); margin-top:1rem}
+.catalog-empty{padding:2rem 0; color:var(--brown-soft)}
+
+/* ── КАРТОЧКА РАБОТЫ ── */
+.work{padding-block:2rem var(--step)}
+.work-layout{display:grid; gap:2rem}
+@media (min-width:58rem){
+  .work-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:3rem; align-items:start}
+}
+.gallery{display:grid; gap:.75rem}
+.gallery-main{margin:0}
+.gallery-main img{width:100%; aspect-ratio:4/5; object-fit:cover; background:var(--paper)}
+.gallery-strip{display:flex; gap:.75rem; overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; padding-bottom:.5rem}
+.gallery-strip[hidden]{display:none}
+.gallery-thumb{
+  flex:0 0 5.5rem; scroll-snap-align:start; padding:0; border:2px solid transparent;
+  background:none; cursor:pointer;
+}
+.gallery-thumb img{aspect-ratio:1/1; object-fit:cover}
+.gallery-thumb[aria-current="true"]{border-color:var(--clay)}
+.work-head h1{font-size:clamp(1.75rem,6.5vw,2.75rem)}
+.work-cat{display:inline-flex; align-items:center; font-size:.8125rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brown-soft)}
+.work-price{
+  font-family:Unbounded,sans-serif; font-size:1.5rem; font-weight:600;
+  color:var(--clay); margin-top:1rem;
+}
+.work-status{display:inline-flex; align-items:center; gap:.5rem; margin-top:.5rem; font-size:.9375rem; color:var(--brown-soft)}
+.work-status::before{content:""; width:.5rem; height:.5rem; background:var(--glaze)}
+.work-status.is-sold::before{background:var(--brown-soft)}
+.work-story{margin-top:1.5rem; color:var(--brown-soft)}
+.work-cta{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem}
+.work-hint{margin-top:.875rem; font-size:.875rem; color:var(--brown-soft); max-width:40ch}
+.work-hint b{font-weight:600; color:var(--brown)}
+.specs{list-style:none; padding:0; margin:2rem 0 0; display:grid; gap:0}
+.specs li{display:flex; justify-content:space-between; gap:1.5rem; padding:.75rem 0; border-bottom:1px solid rgba(59,36,25,.15); font-size:.9375rem}
+.specs dt,.specs .k{color:var(--brown-soft)}
+.work-ritual{margin-top:1.75rem; padding:1.25rem; background:var(--paper); border-left:3px solid var(--ochre)}
+.work-ritual .eyebrow{margin-bottom:.5rem}
+.work-ship{margin-top:1.75rem; font-size:.9375rem; color:var(--brown-soft)}
+
+/* ── ИСТОРИИ ── */
+.stories-grid{display:grid; gap:2rem}
+@media (min-width:44rem){ .stories-grid{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:64rem){ .stories-grid{grid-template-columns:repeat(3,1fr)} }
+.story-card{text-decoration:none; background:var(--paper); display:flex; flex-direction:column; transition:transform .18s}
+.story-card:hover{transform:translateY(-4px)}
+.story-card img{aspect-ratio:3/2; object-fit:cover; width:100%}
+.story-card-body{padding:1.25rem}
+.story-card h2{font-size:1.1875rem}
+.story-card p{margin-top:.625rem; font-size:.9375rem; color:var(--brown-soft)}
+.article{padding-block:2rem var(--step)}
+.article-head{max-width:44rem; margin-inline:auto}
+.article-head h1{font-size:clamp(1.875rem,7vw,3rem)}
+.article-lead{margin-top:1.25rem; font-size:1.1875rem; color:var(--brown-soft)}
+.article-cover{margin:2rem 0}
+.article-cover img{width:100%; aspect-ratio:3/2; object-fit:cover}
+.article-body{max-width:38rem; margin-inline:auto}
+.article-body p{margin-top:1.25rem}
+.article-back{display:inline-flex; align-items:center; min-height:44px; margin-top:2.5rem; color:var(--clay); text-decoration:none; font-weight:600}
+
+/* ── О МАСТЕРЕ (страница) ── */
+.about-page{padding-block:2rem var(--step)}
+.about-lead{font-size:1.1875rem; color:var(--brown-soft); max-width:46ch; margin-top:1.25rem}
+.prose{max-width:38rem}
+.prose h2{font-size:clamp(1.375rem,5vw,1.75rem); margin-top:2.5rem}
+.prose p{margin-top:1rem; color:var(--brown-soft)}
+.prose p.plain{color:var(--brown)}
+
+/* ── ВСТРЕЧИ ── */
+.meet-list{list-style:none; padding:0; margin:1.25rem 0 0; display:grid; gap:.5rem}
+.meet-list li{padding-left:1.25rem; position:relative; opacity:.94}
+.meet-list li::before{content:""; position:absolute; left:0; top:.65em; width:8px; height:8px; background:var(--ochre)}
+
+/* ── FAQ ── */
+.faq{margin-top:2rem; max-width:44rem}
+.faq details{border-bottom:1px solid rgba(59,36,25,.15)}
+.faq summary{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  min-height:56px; cursor:pointer; font-weight:600; list-style:none;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-size:1.5rem; color:var(--clay); line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding-bottom:1.25rem; color:var(--brown-soft)}
+.faq details p+p{padding-bottom:0; margin-bottom:1.25rem}
+
+/* ── 404 ── */
+.notfound{padding-block:var(--step); text-align:center}
+.notfound h1{font-size:clamp(2rem,8vw,3.5rem)}
+.notfound p{margin-top:1.25rem; color:var(--brown-soft)}
+.notfound .btn{margin-top:2rem}
+
+/* ── Пара фотографий рядом ── */
+.duo{display:grid; gap:1.5rem}
+.duo figure{margin:0}
+.duo img{width:100%; aspect-ratio:3/4; object-fit:cover}
+.duo figcaption{margin-top:.625rem; font-size:.875rem; color:var(--brown-soft)}
+@media (min-width:52rem){ .duo{grid-template-columns:1fr 1fr; gap:2rem} }

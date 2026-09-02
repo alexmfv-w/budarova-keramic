@@ -1,0 +1,18 @@
+/* ── Токены. Палитра снята с самих изделий, см. DESIGN_NOTES.md ── */
+:root{
+  --cream:#F7F0E1;      /* фон страницы */
+  --paper:#FFFBF2;      /* карточки и плашки */
+  --brown:#3B2419;      /* текст, контур сграффито */
+  --brown-soft:#7A6250; /* вторичный текст */
+  --clay:#A8452C;       /* акцент: кнопки, манифест, блок о мастере */
+  --clay-dark:#8A3722;
+  --ochre:#D9A047;      /* пояс, метки */
+  --glaze:#2E7C74;      /* встречи и события */
+
+  --step:clamp(3rem,9vw,5.5rem);   /* вертикальный ритм секций */
+  --wrap:76rem;
+
+  /* Сигнатура: орнаментальный пояс, снят с росписи трипода */
+  --belt:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Crect width='40' height='20' fill='%23D9A047'/%3E%3Cpath d='M0 20 10 3 20 20Z' fill='%23A8452C'/%3E%3Cpath d='M20 20 30 3 40 20Z' fill='%233B2419'/%3E%3Crect width='40' height='2' fill='%233B2419'/%3E%3Crect y='18' width='40' height='2' fill='%23A8452C'/%3E%3C/svg%3E");
+  --belt-thin:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'%3E%3Crect width='24' height='8' fill='%233B2419'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23D9A047'/%3E%3Crect x='12' y='2' width='4' height='4' fill='%23A8452C'/%3E%3C/svg%3E");
+}

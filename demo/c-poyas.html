@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вариант В — «Пояс» · Бударова-керамика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7F0E1; --paper:#FFFBF2; --brown:#3B2419; --brown-soft:#7A6250;
+  --clay:#A8452C; --ochre:#D9A047; --glaze:#2E7C74;
+  --step:clamp(3rem,9vw,5.5rem);
+  --belt:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'%3E%3Crect width='40' height='20' fill='%23D9A047'/%3E%3Cpath d='M0 20 10 3 20 20Z' fill='%23A8452C'/%3E%3Cpath d='M20 20 30 3 40 20Z' fill='%233B2419'/%3E%3Crect width='40' height='2' fill='%233B2419'/%3E%3Crect y='18' width='40' height='2' fill='%23A8452C'/%3E%3C/svg%3E");
+  --belt-thin:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8' viewBox='0 0 24 8'%3E%3Crect width='24' height='8' fill='%233B2419'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23D9A047'/%3E%3Crect x='12' y='2' width='4' height='4' fill='%23A8452C'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--cream); color:var(--brown);
+  font:400 1.0625rem/1.65 "Golos Text",system-ui,sans-serif; overflow-x:hidden}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Unbounded,system-ui,sans-serif; font-weight:600; letter-spacing:-.02em; text-wrap:balance; margin:0; line-height:1.1}
+p{text-wrap:pretty; margin:0}
+:focus-visible{outline:3px solid var(--clay); outline-offset:3px}
+.wrap{width:min(100% - 2.25rem, 76rem); margin-inline:auto}
+.eyebrow{font-family:"Golos Text",sans-serif; font-size:.75rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--clay); margin:0 0 .875rem}
+
+/* СИГНАТУРА: орнаментальный пояс */
+.belt{height:20px; background:var(--belt) repeat-x; background-size:auto 20px}
+.belt-thin{height:8px; background:var(--belt-thin) repeat-x; background-size:auto 8px}
+
+/* шапка */
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0}
+.brand{font-family:Unbounded,sans-serif; font-weight:600; font-size:1.0625rem; letter-spacing:-.01em; text-decoration:none}
+.brand i{font-style:normal; color:var(--clay)}
+.nav{display:none}
+@media (min-width:58rem){
+  .nav{display:flex; gap:1.5rem; font-size:.9375rem; font-weight:500}
+  .nav a{text-decoration:none; padding:.5rem 0}
+  .nav a:hover{color:var(--clay)}
+}
+
+/* hero */
+.hero{display:grid; gap:0}
+.hero-img img{width:100%; aspect-ratio:5/4; object-fit:cover}
+.hero-text{background:var(--paper); padding:2rem 1.5rem 2.25rem}
+.hero h1{font-size:clamp(2rem,9vw,3.75rem)}
+.hero h1 mark{background:none; color:var(--clay)}
+.hero-sub{margin-top:1.25rem; color:var(--brown-soft); max-width:36ch}
+.actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem}
+.btn{display:inline-flex; align-items:center; min-height:50px; padding:0 1.375rem; font-weight:500; text-decoration:none; border:2px solid var(--brown); transition:background .18s,color .18s}
+.btn-solid{background:var(--clay); border-color:var(--clay); color:var(--paper)}
+.btn-solid:hover{background:var(--brown); border-color:var(--brown)}
+.btn-ghost:hover{background:var(--brown); color:var(--paper)}
+@media (min-width:58rem){
+  .hero{grid-template-columns:1fr 1fr; align-items:stretch}
+  .hero-img img{height:100%; aspect-ratio:auto; min-height:30rem}
+  .hero-text{display:flex; flex-direction:column; justify-content:center; padding:4rem 3.5rem}
+}
+
+/* ленты-направления */
+.ribbon{display:grid; gap:0; background:var(--paper)}
+.ribbon img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.ribbon-body{padding:1.75rem 1.5rem 2rem}
+.ribbon h2{font-size:clamp(1.5rem,6vw,2.25rem)}
+.ribbon p{margin-top:.875rem; color:var(--brown-soft); max-width:44ch}
+.ribbon .more{display:inline-flex; align-items:center; min-height:44px; margin-top:1rem; font-weight:600; color:var(--clay)}
+@media (min-width:52rem){
+  .ribbon{grid-template-columns:1fr 1fr; align-items:center}
+  .ribbon img{height:100%; aspect-ratio:auto; min-height:22rem}
+  .ribbon-body{padding:3rem}
+  .ribbon.flip img{order:2}
+}
+
+/* каталог */
+.cat{padding-block:var(--step)}
+.sechead{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:.5rem 1.5rem; margin-bottom:1.75rem}
+.sechead h2{font-size:clamp(1.75rem,6.5vw,2.5rem)}
+.sechead a{font-weight:600; font-size:.9375rem; color:var(--clay)}
+.grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem 1rem}
+@media (min-width:44rem){ .grid{grid-template-columns:repeat(3,1fr); gap:2rem 1.5rem} }
+@media (min-width:64rem){ .grid{grid-template-columns:repeat(4,1fr)} }
+.card{text-decoration:none; background:var(--paper); display:flex; flex-direction:column; transition:transform .18s}
+.card:hover,.card:focus-visible{transform:translateY(-4px)}
+.card img{width:100%; aspect-ratio:4/5; object-fit:cover}
+.card-body{padding:.875rem .875rem 1rem}
+.card-title{font-family:Unbounded,sans-serif; font-weight:400; font-size:.9375rem; line-height:1.3; display:block}
+.card-meta{display:block; margin-top:.5rem; font-size:.875rem; color:var(--brown-soft)}
+.card-price{display:block; margin-top:.25rem; font-weight:600; color:var(--clay)}
+
+/* цитата на глиняном фоне */
+.quote{background:var(--clay); color:var(--cream); padding:var(--step) 0}
+.quote blockquote{margin:0; font-family:Unbounded,sans-serif; font-weight:400; font-size:clamp(1.375rem,5.5vw,2.25rem); line-height:1.3; max-width:22ch}
+.quote p{margin-top:1.5rem; max-width:48ch; opacity:.9}
+
+/* встречи */
+.meet{padding-block:var(--step)}
+.meet-in{background:var(--glaze); color:var(--paper); padding:2rem 1.5rem 2.25rem}
+.meet h2{font-size:clamp(1.5rem,6vw,2.25rem)}
+.meet p{margin-top:1rem; max-width:48ch; opacity:.93}
+.meet .btn{margin-top:1.5rem; border-color:var(--paper); color:var(--paper)}
+.meet .btn:hover{background:var(--paper); color:var(--glaze)}
+@media (min-width:52rem){ .meet-in{padding:3.25rem} }
+
+/* контакты */
+.contacts{padding-block:var(--step)}
+.contacts h2{font-size:clamp(1.75rem,6.5vw,2.5rem)}
+.clist{list-style:none; padding:0; margin:1.75rem 0 0; display:grid; gap:.75rem}
+.clist a{display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:56px; padding:0 1.125rem; background:var(--paper); text-decoration:none; font-weight:500; border:2px solid transparent}
+.clist a:hover{border-color:var(--clay); color:var(--clay)}
+.ship{margin-top:2rem; font-size:.9375rem; color:var(--brown-soft); max-width:48ch}
+@media (min-width:52rem){ .clist{grid-template-columns:repeat(3,1fr)} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important; animation:none!important} }
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+  <a class="brand" href="#">Бударова<i>·</i>керамика</a>
+  <nav class="nav"><a href="#catalog">Работы</a><a href="#story">О мастере</a><a href="#meet">Встречи</a><a href="#contacts">Контакты</a></nav>
+</header>
+<div class="belt" aria-hidden="true"></div>
+
+<main>
+<section class="hero">
+  <div class="hero-img">
+    <img src="img/hero-tripods.webp" srcset="img/hero-tripods-sm.webp 800w, img/hero-tripods.webp 1600w"
+         sizes="(min-width:58rem) 50vw, 100vw" width="1600" height="900" fetchpriority="high"
+         alt="Керамические триподы с росписью, сложенные горкой">
+  </div>
+  <div class="hero-text">
+    <p class="eyebrow">Авторская керамика · Краснодар</p>
+    <h1>А какао что? <mark>Лысое?</mark></h1>
+    <p class="hero-sub">Чай пьём из чайных чашек, эспрессо — из кофейных. Для какао есть трипод: чаша на трёх ножках, как делали майя. Исправляю недочёт.</p>
+    <div class="actions">
+      <a class="btn btn-solid" href="#catalog">Смотреть работы</a>
+      <a class="btn btn-ghost" href="https://t.me/Budarova_keramika">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
+<div class="belt" aria-hidden="true"></div>
+
+<section class="ribbon">
+  <img src="img/tripod.webp" srcset="img/tripod-sm.webp 500w, img/tripod.webp 1000w" sizes="(min-width:52rem) 50vw, 100vw" width="1000" height="1250" loading="lazy" alt="Трипод с треугольным орнаментом охрой и красным">
+  <div class="ribbon-body">
+    <p class="eyebrow">Триподы</p>
+    <h2>Посуда для напитка богов</h2>
+    <p>Майя и ацтеки мололи бобы, разводили холодной водой и взбивали до пены. Полихромные чаши на трёх ножках были роскошью — их ставили на пирах и в ритуалах. Объёмы 200 и 400 мл.</p>
+    <span class="more">Смотреть триподы →</span>
+  </div>
+</section>
+<div class="belt-thin" aria-hidden="true"></div>
+
+<section class="ribbon flip">
+  <img src="img/mharium.webp" srcset="img/mharium-sm.webp 500w, img/mharium.webp 1000w" sizes="(min-width:52rem) 50vw, 100vw" width="1000" height="1250" loading="lazy" alt="Два керамических мхариума со мхом">
+  <div class="ribbon-body">
+    <p class="eyebrow">Мхариумы</p>
+    <h2>Керамика и мох</h2>
+    <p>Сосуд, в котором живёт мох — живой или стабилизированный. Один и тот же мхариум работает подсвечником, курительницей и ёмкостью для украшений. Многофункциональный индеец.</p>
+    <span class="more">Смотреть мхариумы →</span>
+  </div>
+</section>
+<div class="belt-thin" aria-hidden="true"></div>
+
+<section class="ribbon">
+  <img src="img/mirror-jaguar.webp" srcset="img/mirror-jaguar-sm.webp 500w, img/mirror-jaguar.webp 1000w" sizes="(min-width:52rem) 50vw, 100vw" width="1000" height="1250" loading="lazy" alt="Зеркало в керамической раме с ягуаром">
+  <div class="ribbon-body">
+    <p class="eyebrow">Интерьер</p>
+    <h2>Зеркала, подсвечники, горшки</h2>
+    <p>Рама собирается из отдельных плиток: ягуар, волна, листья — рисунок процарапан по сырой глине. Такие вещи делаются в одном экземпляре и обычно уезжают сразу.</p>
+    <span class="more">Смотреть интерьер →</span>
+  </div>
+</section>
+<div class="belt" aria-hidden="true"></div>
+
+<section class="wrap cat" id="catalog" aria-labelledby="cat-h">
+  <div class="sechead"><h2 id="cat-h">Работы в наличии</h2><a href="#contacts">Все работы →</a></div>
+  <div class="grid">
+    <a class="card" href="#"><img src="img/tripod.webp" srcset="img/tripod-sm.webp 500w, img/tripod.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Трипод «Зигзаг»"><span class="card-body"><span class="card-title">Трипод «Зигзаг»</span><span class="card-meta">200 мл</span><span class="card-price">1500 ₽</span></span></a>
+    <a class="card" href="#"><img src="img/tripods-wide.webp" srcset="img/tripods-wide-sm.webp 800w, img/tripods-wide.webp 1600w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1600" height="1000" loading="lazy" alt="Трипод «Птицы»"><span class="card-body"><span class="card-title">Трипод «Птицы»</span><span class="card-meta">400 мл</span><span class="card-price">1500 ₽</span></span></a>
+    <a class="card" href="#"><img src="img/mharium.webp" srcset="img/mharium-sm.webp 500w, img/mharium.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Мхариум красный"><span class="card-body"><span class="card-title">Мхариум красный</span><span class="card-meta">со мхом</span><span class="card-price">цена по запросу</span></span></a>
+    <a class="card" href="#"><img src="img/pot-birds.webp" srcset="img/pot-birds-sm.webp 500w, img/pot-birds.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Горшок «Полёт»"><span class="card-body"><span class="card-title">Горшок «Полёт»</span><span class="card-meta">глазурь</span><span class="card-price">цена по запросу</span></span></a>
+    <a class="card" href="#"><img src="img/indeec.webp" srcset="img/indeec-sm.webp 500w, img/indeec.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Скульптура «Индеец»"><span class="card-body"><span class="card-title">Индеец</span><span class="card-meta">продано</span><span class="card-price">под заказ</span></span></a>
+    <a class="card" href="#"><img src="img/plates.webp" srcset="img/plates-sm.webp 500w, img/plates.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Керамические тарелки"><span class="card-body"><span class="card-title">Тарелки</span><span class="card-meta">набор</span><span class="card-price">цена по запросу</span></span></a>
+    <a class="card" href="#"><img src="img/candlestick.webp" srcset="img/candlestick-sm.webp 500w, img/candlestick.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Подсвечник"><span class="card-body"><span class="card-title">Подсвечник</span><span class="card-meta">интерьер</span><span class="card-price">цена по запросу</span></span></a>
+    <a class="card" href="#"><img src="img/mirror-jaguar.webp" srcset="img/mirror-jaguar-sm.webp 500w, img/mirror-jaguar.webp 1000w" sizes="(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw" width="1000" height="1250" loading="lazy" alt="Зеркало «Ягуар»"><span class="card-body"><span class="card-title">Зеркало «Ягуар»</span><span class="card-meta">продано</span><span class="card-price">под заказ</span></span></a>
+  </div>
+</section>
+
+<section class="quote" id="story">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--ochre)">О мастере</p>
+    <blockquote>«Совершенству в керамике нет предела»</blockquote>
+    <p>Алёна Бударова, художник-керамист из Краснодара. Основала изостудию «Кисть и Перо», где ведёт занятия для детей и взрослых. Керамика — отдельная линия: триподы, мхариумы, зеркала, посуда.</p>
+  </div>
+</section>
+
+<section class="wrap meet" id="meet">
+  <div class="meet-in">
+    <p class="eyebrow" style="color:inherit;opacity:.8">Встречи</p>
+    <h2>Мастер-классы и какао-церемонии</h2>
+    <p>Занятия по керамике в студии в Краснодаре — для детей и взрослых. И какао-церемонии, где триподы делают то, ради чего их придумали.</p>
+    <a class="btn" href="https://t.me/Budarova_keramika">Узнать даты</a>
+  </div>
+</section>
+
+<section class="wrap contacts" id="contacts">
+  <p class="eyebrow">Связь</p>
+  <h2>Напишите — договоримся</h2>
+  <ul class="clist">
+    <li><a href="https://t.me/Budarova_keramika">Telegram <span>→</span></a></li>
+    <li><a href="https://max.ru/channel_kistpero">MAX <span>→</span></a></li>
+    <li><a href="tel:+79530716785">+7 953 071 67 85 <span>→</span></a></li>
+  </ul>
+  <p class="ship">Отправляю Почтой России, СДЭК и Ozon. Доставка не входит в стоимость и оплачивается отдельно. Самовывоз в Краснодаре — по договорённости.</p>
+</section>
+</main>
+<div class="belt" aria-hidden="true"></div>
+</body>
+</html>
