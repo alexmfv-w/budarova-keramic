@@ -21,10 +21,15 @@
 .manifest{background:var(--clay); color:var(--cream); padding:var(--step) 0}
 .manifest-in{display:grid; gap:1.5rem}
 .manifest q{
-  font-family:Unbounded,sans-serif; font-weight:400;
-  font-size:clamp(1.25rem,4.8vw,1.875rem); line-height:1.35; quotes:"«" "»";
+  display:block;
+  font-family:Unbounded,sans-serif; font-weight:600;
+  font-size:clamp(1.5rem,6vw,2.5rem); line-height:1.25; quotes:"«" "»";
+  text-wrap:balance;
 }
-.manifest p{opacity:.9; max-width:44ch}
+.manifest p{
+  font-size:clamp(1.0625rem,2.4vw,1.25rem); line-height:1.6;
+  opacity:1; color:#FBEDE2; max-width:44ch;
+}
 @media (min-width:58rem){
   .manifest{padding-top:calc(var(--step) + 3.5rem)}
   .manifest-in{grid-template-columns:1.25fr 1fr; gap:3rem; align-items:start}
@@ -89,14 +94,50 @@
 .story-card-body{padding:1.25rem}
 .story-card h2{font-size:1.1875rem}
 .story-card p{margin-top:.625rem; font-size:.9375rem; color:var(--brown-soft)}
-.article{padding-block:2rem var(--step)}
-.article-head{max-width:44rem; margin-inline:auto}
-.article-head h1{font-size:clamp(1.875rem,7vw,3rem)}
-.article-lead{margin-top:1.25rem; font-size:1.1875rem; color:var(--brown-soft)}
-.article-cover{margin:2rem 0}
-.article-cover img{width:100%; aspect-ratio:3/2; object-fit:cover}
+.article{padding-block:0 var(--step)}
+.article-hero{position:relative; margin-bottom:2rem}
+.article-cover{margin:0}
+.article-cover img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.article-head{
+  position:relative; z-index:1; background:var(--paper);
+  margin:-3rem 1.25rem 0; padding:1.75rem 1.5rem 2rem;
+  border-top:6px solid var(--clay);
+}
+.article-head h1{font-size:clamp(1.75rem,7vw,3rem)}
+.article-lead{margin-top:1rem; font-size:1.125rem; color:var(--brown-soft)}
+@media (min-width:58rem){
+  .article-cover img{aspect-ratio:21/9}
+  .article-head{
+    width:min(100% - 2.25rem, var(--wrap)); margin-inline:auto;
+    margin-top:-5rem; max-width:46rem; padding:2.5rem 3rem 2.75rem;
+  }
+}
 .article-body{max-width:38rem; margin-inline:auto}
-.article-body p{margin-top:1.25rem}
+.article-body > p{margin-top:1.25rem; font-size:1.0625rem; line-height:1.7}
+.article-h{
+  font-size:clamp(1.25rem,4.5vw,1.625rem); margin-top:2.5rem;
+  padding-top:1.5rem; border-top:2px solid var(--ochre);
+}
+.article-callout{
+  margin:2rem 0 0; padding:1.5rem; background:var(--clay); color:var(--cream);
+}
+.article-callout p{
+  font-family:Unbounded,sans-serif; font-weight:400;
+  font-size:clamp(1.0625rem,3.4vw,1.375rem); line-height:1.4;
+}
+/* нумерованные карточки: 5 причин, кому подарить */
+.numbered{list-style:none; counter-reset:none; padding:0; margin:2rem 0 0; display:grid; gap:1rem}
+.numbered-item{
+  display:grid; grid-template-columns:auto 1fr; gap:1rem;
+  background:var(--paper); padding:1.25rem;
+}
+.numbered-n{
+  font-family:Unbounded,sans-serif; font-weight:600; font-size:1.5rem;
+  line-height:1; color:var(--clay); min-width:1.5rem;
+}
+.numbered-text{display:block}
+.numbered-text b{display:block; font-weight:600; margin-bottom:.375rem}
+.numbered-text span{display:block; color:var(--brown-soft); font-size:.9375rem; line-height:1.6}
 .article-back{display:inline-flex; align-items:center; min-height:44px; margin-top:2.5rem; color:var(--clay); text-decoration:none; font-weight:600}
 
 /* ── О МАСТЕРЕ (страница) ── */
@@ -137,3 +178,28 @@
 .duo img{width:100%; aspect-ratio:3/4; object-fit:cover}
 .duo figcaption{margin-top:.625rem; font-size:.875rem; color:var(--brown-soft)}
 @media (min-width:52rem){ .duo{grid-template-columns:1fr 1fr; gap:2rem} }
+
+/* ── Квадратные фото на странице «О мастере» ── */
+.panel-figure-square img{aspect-ratio:1/1}
+@media (min-width:58rem){ .panel-figure-square img{aspect-ratio:1/1; max-block-size:34rem} }
+.duo img{aspect-ratio:1/1}
+
+/* ── Заглушка для позиции без фотографий ── */
+.photo-soon{
+  aspect-ratio:4/5; display:grid; place-items:center;
+  background:var(--cream) var(--belt-thin) repeat-x bottom/auto 8px;
+  border:2px dashed rgba(59,36,25,.25);
+}
+.photo-soon span{
+  font-family:Unbounded,sans-serif; font-size:.875rem; color:var(--brown-soft);
+  text-align:center; padding:1rem;
+}
+
+/* ── Дисклеймер про глазурь ── */
+.work-note{
+  margin-top:1.75rem; padding:1rem 1.125rem; background:var(--paper);
+  border-left:3px solid var(--ochre); font-size:.875rem; line-height:1.6; color:var(--brown-soft);
+}
+
+/* ── Метка «скоро» ── */
+.badge-soon{background:var(--glaze); color:var(--paper)}

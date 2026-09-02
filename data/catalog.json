@@ -1,298 +1,356 @@
 {
-  "updated": "2026-09-02",
+  "updated": "2026-09-03",
   "items": [
     {
-      "slug": "tripod-zigzag",
-      "title": "Трипод «Зигзаг»",
+      "slug": "tripod-zmey-maya",
+      "title": "Трипод «Змей майя»",
       "category": "tripod",
-      "story": "Чаша на трёх ножках с треугольным орнаментом по охряному полю. Форма повторяет доколумбовые чаши майя: полихромная роспись была у них признаком роскоши, монохромную делали для быта.",
-      "ritual_usage": "Размер под порцию какао, из которой пили не спеша.",
+      "meta": "чаша на трёх ножках",
+      "dimensions": "от 150 до 400 мл",
+      "story": "Чаши, на которых идёт змей — Кетцалькоатль. Форма повторяет доколумбовые триподы майя: чаша стоит на трёх ножках, роспись процарапана по сырой глине. Объём подбираем под вас — от 150 до 400 мл.",
+      "ritual_usage": "Посуда для какао: та самая, из которой напиток пили на пирах и во время ритуалов.",
       "materials": null,
-      "dimensions": "200 мл",
       "care": null,
       "price": 1500,
       "availability": "in_stock",
       "featured": true,
+      "food_note": true,
       "images": [
-        "tripod-zigzag-01",
-        "tripod-zigzag-02"
-      ],
-      "meta": null
+        "tripod-zmey-maya-01",
+        "tripod-zmey-maya-02",
+        "tripod-zmey-maya-03"
+      ]
     },
     {
-      "slug": "tripod-ptitsy",
-      "title": "Трипод «Птицы»",
+      "slug": "tripod-ornament",
+      "title": "Трипод «Орнамент»",
       "category": "tripod",
-      "story": "Большая чаша, по боку идёт лента с фигурами птиц. Каждая фигура процарапана вручную, поэтому две одинаковые чаши получиться не могут.",
-      "ritual_usage": "Объём на двоих или на длинную церемонию.",
+      "meta": "чаша на трёх ножках",
+      "dimensions": "от 150 до 400 мл",
+      "story": "Чаши с геометрическим орнаментом — треугольники, ступени, спирали. Каждая расписана отдельно, поэтому даже две чаши из одной партии не совпадают.",
+      "ritual_usage": "Посуда для какао: та самая, из которой напиток пили на пирах и во время ритуалов.",
       "materials": null,
-      "dimensions": "400 мл",
       "care": null,
       "price": 1500,
       "availability": "in_stock",
       "featured": true,
+      "food_note": true,
       "images": [
-        "tripod-ptitsy-01",
-        "tripod-ptitsy-02"
-      ],
-      "meta": null
+        "tripod-ornament-01",
+        "tripod-ornament-02",
+        "tripod-ornament-03"
+      ]
     },
     {
-      "slug": "tripod-monokhrom",
-      "title": "Трипод «Монохром»",
+      "slug": "tripod-obyomny-dekor",
+      "title": "Трипод с объёмным декором",
       "category": "tripod",
-      "story": "Пара чаш без цветной росписи: рисунок держится только на процарапанной линии и цвете самой глины. У майя такая посуда была повседневной — в отличие от многоцветной, которую доставали по случаю.",
-      "ritual_usage": "Тот самый бытовой вариант, только сделанный вручную.",
-      "materials": null,
-      "dimensions": "200 мл",
-      "care": null,
-      "price": 1500,
-      "availability": "in_stock",
-      "featured": true,
-      "images": [
-        "tripod-monokhrom-01"
-      ],
-      "meta": null
-    },
-    {
-      "slug": "tripod-volna",
-      "title": "Трипод «Волна»",
-      "category": "tripod",
-      "story": "Три чаши из одной партии: общий силуэт, разная роспись. Хорошо видно, насколько отличаются вещи, вышедшие из одного обжига.",
+      "meta": "новая партия",
+      "dimensions": "от 150 до 400 мл",
+      "story": "Партия с объёмным декором: рельеф выступает над поверхностью чаши. Сейчас в работе — фотографии добавлю, как только выйдут из печи.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": "200 мл",
       "care": null,
-      "price": 1500,
-      "availability": "in_stock",
-      "featured": true,
-      "images": [
-        "tripod-volna-01"
-      ],
-      "meta": null
+      "price": 2000,
+      "availability": "on_order",
+      "featured": false,
+      "food_note": true,
+      "coming": true,
+      "images": []
     },
     {
-      "slug": "mharium-krasny",
-      "title": "Мхариум красный",
+      "slug": "mharium-vityaz",
+      "title": "Мхариум «Витязь на распутье»",
       "category": "mharium",
-      "story": "Сосуд со мхом на блюдце, красно-охристая глазурь. Работает и как подсвечник, и как место для колец и серёг.",
+      "meta": "мох в подарок",
+      "dimensions": "диаметр 15 см",
+      "story": "Витязь стоит перед камнем на развилке — сцена, знакомая каждому с детства. Вокруг фигуры лакуны, которые заполняются мхом.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
-      "price": null,
+      "price": 2000,
       "availability": "in_stock",
       "featured": true,
+      "food_note": false,
       "images": [
-        "mharium-krasny-01"
-      ],
-      "meta": "со мхом, на блюдце"
+        "mharium-vityaz-01",
+        "mharium-vityaz-02",
+        "mharium-vityaz-03",
+        "mharium-vityaz-04"
+      ]
     },
     {
-      "slug": "mharium-maska",
-      "title": "Мхариум «Маска»",
+      "slug": "mharium-mudrets",
+      "title": "Мхариум «Спящий мудрец»",
       "category": "mharium",
-      "story": "Мхариум в форме маски: светлая керамика, внутри ярко-зелёный мох. Контраст между сухой глиной и живой зеленью — то, ради чего эта серия и появилась.",
+      "meta": "мох в подарок",
+      "dimensions": null,
+      "story": "Фигура спит, укрывшись, а вокруг разрастается мох. Небольшая настольная вещь: помещается рядом с ноутбуком.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
-      "price": null,
+      "price": 1000,
       "availability": "in_stock",
       "featured": true,
+      "food_note": false,
       "images": [
-        "mharium-maska-01"
-      ],
-      "meta": "со мхом"
+        "mharium-mudrets-02",
+        "mharium-mudrets-01",
+        "mharium-mudrets-03"
+      ]
     },
     {
-      "slug": "mharium-derevo",
-      "title": "Мхариум «Дерево»",
+      "slug": "mharium-stareyshiny",
+      "title": "Мхариум «Три старейшины»",
       "category": "mharium",
-      "story": "Внутри сосуда — керамическое дерево и мох, по борту идут расписные пиктограммы. Настольная вещь: помещается рядом с ноутбуком и чашкой.",
+      "meta": "мох в подарок",
+      "dimensions": null,
+      "story": "Три фигуры стоят по краю чаши, между ними мох и бирюзовая заводь. По борту идёт процарапанный орнамент.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
-      "price": null,
+      "price": 1000,
+      "availability": "in_stock",
+      "featured": true,
+      "food_note": false,
+      "images": [
+        "mharium-stareyshiny-02",
+        "mharium-stareyshiny-01",
+        "mharium-stareyshiny-03"
+      ]
+    },
+    {
+      "slug": "mharium-yablonya",
+      "title": "Мхариум «Яблоня»",
+      "category": "mharium",
+      "meta": "мох в подарок",
+      "dimensions": null,
+      "story": "Дерево с круглой кроной над чашей: глазурованные листья, под ними мох и небольшая заводь.",
+      "ritual_usage": null,
+      "materials": null,
+      "care": null,
+      "price": 1500,
       "availability": "in_stock",
       "featured": false,
+      "food_note": false,
       "images": [
-        "mharium-derevo-01"
-      ],
-      "meta": "со мхом и деревцем"
+        "mharium-yablonya-01",
+        "mharium-yablonya-02",
+        "mharium-yablonya-03"
+      ]
+    },
+    {
+      "slug": "mharium-drevo",
+      "title": "Мхариум «Мировое древо»",
+      "category": "mharium",
+      "meta": "мох в подарок",
+      "dimensions": "высота 18 см",
+      "story": "Самый большой мхариум серии: три яруса, гнездо наверху, лакуны на разных уровнях и глазурованные листья по стволу. В кроне живёт маленькая птица.",
+      "ritual_usage": null,
+      "materials": null,
+      "care": null,
+      "price": 2000,
+      "availability": "in_stock",
+      "featured": true,
+      "food_note": false,
+      "images": [
+        "mharium-drevo-01",
+        "mharium-drevo-02",
+        "mharium-drevo-03",
+        "mharium-drevo-04",
+        "mharium-drevo-05"
+      ]
     },
     {
       "slug": "uasko-ptitsa",
       "title": "Уаскос «Птица»",
       "category": "uasko",
-      "story": "Свистящий сосуд в форме птицы со стремявидной ручкой. У инков такие сосуды звучали в ритуалах: считалось, что звук соединяет физический и духовный миры, а вода и воздух внутри — единство противоположностей.",
-      "ritual_usage": "Сосуд сделан по доколумбовым образцам: звук рождается, когда вода вытесняет воздух.",
-      "materials": null,
+      "meta": "поющий сосуд",
       "dimensions": null,
+      "story": "Поющий сосуд в форме птицы со стремявидной ручкой. Звук рождается, когда вода внутри вытесняет воздух.",
+      "ritual_usage": "Со звучанием поющих сосудов можно познакомиться в канале MAX или в Telegram.",
+      "materials": null,
       "care": null,
       "price": null,
       "availability": "on_order",
       "featured": true,
+      "food_note": true,
       "images": [
         "uasko-ptitsa-01"
-      ],
-      "meta": "свистящий сосуд"
+      ]
     },
     {
-      "slug": "uasko-zver",
-      "title": "Уаскос «Зверь»",
+      "slug": "uasko-indeec",
+      "title": "Уаскос «Индеец»",
       "category": "uasko",
-      "story": "Зооморфный сосуд той же группы: фигура зверя и ручка-стремя, соединяющая тело с горлом. Рельеф процарапан по сырой глине.",
-      "ritual_usage": null,
-      "materials": null,
+      "meta": "поющий сосуд",
       "dimensions": null,
+      "story": "Поющий сосуд с фигурой индейца. Со звучанием поющих сосудов можно познакомиться в канале MAX или в Telegram.",
+      "ritual_usage": "Со звучанием поющих сосудов можно познакомиться в канале MAX или в Telegram.",
+      "materials": null,
       "care": null,
-      "price": null,
+      "price": 7000,
       "availability": "on_order",
-      "featured": false,
+      "featured": true,
+      "food_note": true,
       "images": [
         "uasko-zver-01"
-      ],
-      "meta": "свистящий сосуд"
+      ]
     },
     {
-      "slug": "zerkalo-yaguar",
-      "title": "Зеркало «Ягуар»",
+      "slug": "zerkalo-bestiariy",
+      "title": "Зеркало «Бестиарий»",
       "category": "interior",
-      "story": "Рама собрана из отдельных керамических плиток: по верху лежит ягуар, ниже идут волна и листья. Рисунок процарапан по сырой глине, плитки расписаны по одной.",
+      "meta": "керамическая рама",
+      "dimensions": null,
+      "story": "Зеркало в керамической рельефной раме. Основа — фанера, крепление — металлический тросик.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
       "price": null,
       "availability": "sold",
       "featured": false,
+      "food_note": false,
       "images": [
-        "zerkalo-yaguar-01",
-        "zerkalo-yaguar-02"
-      ],
-      "meta": "рама из плиток"
+        "zerkalo-bestiariy-01",
+        "zerkalo-bestiariy-02"
+      ]
     },
     {
-      "slug": "indeec",
-      "title": "Индеец",
+      "slug": "skulptura-chasha",
+      "title": "Скульптура-чаша",
       "category": "interior",
-      "story": "Скульптура-чаша: фигура в головном уборе держит перед собой ёмкость. Подсвечник, курительница и место для мелочей одновременно — тот самый многофункциональный индеец.",
+      "meta": "благовония, свеча, мелочи",
+      "dimensions": "высота 24 см",
+      "story": "Скульптура-чаша. Можно использовать для благовоний, как мхариум, подсвечник или ёмкость для мелочей.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
       "price": null,
       "availability": "sold",
       "featured": false,
+      "food_note": false,
       "images": [
         "indeec-01",
         "indeec-02"
-      ],
-      "meta": "скульптура-чаша"
-    },
-    {
-      "slug": "gorshok-polet",
-      "title": "Горшок «Полёт»",
-      "category": "interior",
-      "story": "Кашпо с бирюзовой глазурью: по боку летит птица между веток. Глазурь ложится неровно, и это видно — так и задумано.",
-      "ritual_usage": null,
-      "materials": null,
-      "dimensions": null,
-      "care": null,
-      "price": null,
-      "availability": "in_stock",
-      "featured": true,
-      "images": [
-        "gorshok-polet-01"
-      ],
-      "meta": "кашпо, глазурь"
-    },
-    {
-      "slug": "kashpo-more",
-      "title": "Кашпо «Море»",
-      "category": "interior",
-      "story": "Кашпо с бирюзовыми полосами и завитками на терракотовой подставке. Снято с живым растением — так понятнее размер.",
-      "ritual_usage": null,
-      "materials": null,
-      "dimensions": null,
-      "care": null,
-      "price": null,
-      "availability": "in_stock",
-      "featured": false,
-      "images": [
-        "kashpo-more-01"
-      ],
-      "meta": "кашпо с подставкой"
+      ]
     },
     {
       "slug": "podsvechnik-tri-svechi",
       "title": "Подсвечник на три свечи",
       "category": "interior",
+      "meta": "на три свечи",
+      "dimensions": null,
       "story": "Трёхрожковый подсвечник из тёмной глины с геометрическим поясом. При зажжённых свечах рельеф читается лучше, чем при дневном свете.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
       "price": null,
-      "availability": "in_stock",
-      "featured": true,
+      "availability": "sold",
+      "featured": false,
+      "food_note": false,
       "images": [
         "podsvechnik-tri-svechi-01"
-      ],
-      "meta": "на три свечи"
+      ]
     },
     {
-      "slug": "chaynik-s-chashkoy",
-      "title": "Чайник с чашкой",
+      "slug": "voron-most",
+      "title": "Блюдо «Ворон на мосту»",
       "category": "interior",
-      "story": "Набор в одной росписи: кувшин с крышкой и чашка. Орнамент идёт поясом по тулову, как на триподах.",
+      "meta": "блюдо",
+      "dimensions": "диаметр 25 см",
+      "story": "Блюдо с вороном на мосту. Рисунок процарапан по сырой глине и расписан по одному элементу.",
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
+      "care": null,
+      "price": 3000,
+      "availability": "in_stock",
+      "featured": true,
+      "food_note": true,
+      "images": [
+        "voron-most-01",
+        "voron-most-02",
+        "voron-most-03",
+        "voron-most-04"
+      ]
+    },
+    {
+      "slug": "belyy-voron",
+      "title": "Блюдо «Белый ворон на мосту»",
+      "category": "interior",
+      "meta": "блюдо",
+      "dimensions": "диаметр 25 см",
+      "story": "Тот же сюжет в светлой гамме: белый ворон на мосту.",
+      "ritual_usage": null,
+      "materials": null,
+      "care": null,
+      "price": 3000,
+      "availability": "in_stock",
+      "featured": true,
+      "food_note": true,
+      "images": [
+        "belyy-voron-01",
+        "belyy-voron-02",
+        "belyy-voron-03",
+        "belyy-voron-04"
+      ]
+    },
+    {
+      "slug": "salamandra",
+      "title": "Тарелка «Саламандра»",
+      "category": "interior",
+      "meta": "тарелка",
+      "dimensions": "диаметр 23 см, высота 5 см",
+      "story": "Тарелка с саламандрой.",
+      "ritual_usage": null,
+      "materials": null,
+      "care": null,
+      "price": 3000,
+      "availability": "in_stock",
+      "featured": true,
+      "food_note": true,
+      "images": [
+        "salamandra-01",
+        "salamandra-02",
+        "salamandra-03"
+      ]
+    },
+    {
+      "slug": "bolshaya-ryba",
+      "title": "Светильник «Большая рыба»",
+      "category": "interior",
+      "meta": "светильник",
+      "dimensions": "высота 27 см",
+      "story": "Керамический светильник в форме большой рыбы.",
+      "ritual_usage": null,
+      "materials": null,
       "care": null,
       "price": null,
-      "availability": "in_stock",
+      "availability": "sold",
       "featured": false,
+      "food_note": false,
       "images": [
-        "chaynik-s-chashkoy-01"
-      ],
-      "meta": "набор"
+        "bolshaya-ryba-01",
+        "bolshaya-ryba-02"
+      ]
     },
     {
       "slug": "tarelki-ryby",
       "title": "Тарелки «Рыбы»",
       "category": "interior",
-      "story": "Тарелки с бирюзовыми вставками: в круге — рыба, знак или птица. Каждая расписана отдельно, повторов нет.",
+      "meta": "тарелки",
+      "dimensions": null,
+      "story": null,
       "ritual_usage": null,
       "materials": null,
-      "dimensions": null,
       "care": null,
       "price": null,
       "availability": "in_stock",
       "featured": false,
+      "food_note": true,
       "images": [
         "tarelki-ryby-01"
-      ],
-      "meta": "тарелки"
-    },
-    {
-      "slug": "ryby",
-      "title": "Рыбы",
-      "category": "interior",
-      "story": "Две керамические рыбы на подставках. Крупная — с тёмной глазурью и охристыми плавниками, вторая стоит на бирюзовом блюде.",
-      "ritual_usage": null,
-      "materials": null,
-      "dimensions": null,
-      "care": null,
-      "price": null,
-      "availability": "in_stock",
-      "featured": false,
-      "images": [
-        "ryby-01"
-      ],
-      "meta": "две фигуры"
+      ]
     }
   ]
 }

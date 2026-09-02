@@ -53,7 +53,7 @@ function pageHome() {
 <section class="manifest">
   <div class="wrap manifest-in">
     <q>У чая своя чашка, у эспрессо своя. А у какао своей посуды не осталось.</q>
-    <p>Майя и ацтеки пили какао из чаш на трёх ножках — и считали бобы физическим проявлением Кетцалькоатля, бога мудрости. Я возвращаю напитку его посуду.</p>
+    <p>Майя и ацтеки пили какао из чаш на трёх ножках — и считали какао-бобы физическим проявлением Кетцалькоатля, бога мудрости. Я возвращаю напитку его посуду.</p>
   </div>
 </section>
 <div class="belt" aria-hidden="true"></div>
@@ -62,7 +62,7 @@ ${ribbon({
     id: 'dir-tripod', flip: true, image: 'dir-tripods',
     alt: 'Трипод с треугольным орнаментом охрой и красным',
     eyebrow: 'Триподы', title: 'Посуда для напитка богов',
-    text: 'Бобы мололи, разводили холодной водой и взбивали до пены. Полихромные чаши на трёх ножках были роскошью — их ставили на пирах и в ритуалах. Объёмы 200 и 400 мл.',
+    text: 'Бобы мололи, разводили холодной водой и взбивали до пены. Полихромные чаши на трёх ножках были роскошью — их ставили на пирах и в ритуалах. Объёмы от 150 до 400 мл.',
     href: url('/catalog/?c=tripod'), link: 'Смотреть триподы'
   })}
 <div class="belt-thin" aria-hidden="true"></div>
@@ -82,16 +82,6 @@ ${ribbon({
     eyebrow: 'Интерьер', title: 'Зеркала, подсвечники, горшки',
     text: 'Рама собирается из отдельных плиток: ягуар, волна, листья — рисунок процарапан по сырой глине. Такие вещи делаются в одном экземпляре и обычно уезжают сразу.',
     href: url('/catalog/?c=interior'), link: 'Смотреть интерьер'
-  })}
-<div class="belt-thin" aria-hidden="true"></div>
-
-${ribbon({
-    id: 'dir-custom', image: 'custom-uasko',
-    alt: 'Алёна Бударова держит уаскос — свистящий сосуд в форме птицы',
-    eyebrow: 'Под заказ', title: 'Приносите идею — сделаю',
-    text: 'Часть работ рождается из чужой задумки: присылают референс, фотографию из музея, набросок или просто рассказывают, что хочется. Дальше обсуждаем форму, роспись и размер — и я леплю.',
-    note: 'Так появились и уаскос — свистящие сосуды инков. Индейцы верили, что их звук соединяет физический и духовный миры.',
-    href: url('/contacts/'), link: 'Обсудить заказ'
   })}
 <div class="belt" aria-hidden="true"></div>
 
@@ -134,8 +124,8 @@ ${ribbon({
     </figure>
     <div class="panel-body panel-glaze">
       <p class="eyebrow">Встречи</p>
-      <h2 class="h-block" id="meet-h">Мастер-классы и какао-церемонии</h2>
-      <p class="txt">Занятия по керамике в студии «Кисть и Перо» в Краснодаре и какао-церемонии, где триподы делают то, ради чего их придумали.</p>
+      <h2 class="h-block" id="meet-h">Мастер-классы в студии</h2>
+      <p class="txt">Занятия по керамике в студии «Кисть и Перо» в Краснодаре — для детей и взрослых.</p>
       <a class="btn btn-light" href="${url('/meetings/')}">Узнать даты</a>
     </div>
   </div>
@@ -156,7 +146,8 @@ function pageCatalog() {
 <section class="wrap section" aria-labelledby="cat-h">
   <p class="eyebrow">Каталог</p>
   <h1 class="h-section" id="cat-h">Работы</h1>
-  <p class="catalog-intro">Всё, что сейчас есть в наличии, и то, что можно повторить под заказ. Каждая работа сделана в одном экземпляре: даже две чаши из одной партии отличаются росписью. Если что-то уже уехало — напишите, сделаю похожее.</p>
+  <p class="catalog-intro">Этнические мотивы, современные материалы, гармония формы и орнамента, воплощённые в керамике по воле мастера.</p>
+  <p class="catalog-intro">Каждая работа только в одном экземпляре. Похожие, в одном стиле, но двух одинаковых не найти. Уточняйте — вышлю фото конкретно того, что есть на данный момент. Возможны авторские повторы купленных работ.</p>
   <div style="margin-top:2rem">${chips()}</div>
   <div class="grid">
     ${items.map(card).join('\n    ')}
@@ -206,7 +197,9 @@ function pageWork(item) {
   <div class="work-layout">
     <div class="gallery">
       <figure class="gallery-main">
-        ${img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:58rem) 55vw, 100vw', priority: true })}
+        ${item.images.length
+          ? img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:58rem) 55vw, 100vw', priority: true })
+          : '<div class="photo-soon"><span>Фотографии скоро</span></div>'}
       </figure>
       ${thumbs}
     </div>
@@ -215,7 +208,7 @@ function pageWork(item) {
       <h1>${esc(item.title)}</h1>
       <p class="work-price">${esc(sold ? 'Продано' : price)}</p>
       <p class="work-status${sold ? ' is-sold' : ''}">${AVAIL[item.availability]}</p>
-      <p class="work-story">${esc(item.story)}</p>
+      ${item.story ? `<p class="work-story">${esc(item.story)}</p>` : ''}
       <div class="work-cta">
         <a class="btn btn-solid" href="${SITE.tg}">${sold ? 'Сделать похожую' : 'Написать о работе'}</a>
         <a class="btn" href="tel:${SITE.tel}">Позвонить</a>
@@ -228,6 +221,7 @@ function pageWork(item) {
         <p class="eyebrow">Как этим пользовались</p>
         <p>${esc(item.ritual_usage)}</p>
       </div>` : ''}
+      ${item.food_note ? `<p class="work-note">Внутренняя поверхность и край покрыты глазурью, допущенной к контакту с пищевыми продуктами. При этом изделие имеет декоративно-сувенирный характер и не является посудой.</p>` : ''}
       <p class="work-ship">${shipNote}</p>
     </div>
   </div>
@@ -243,8 +237,8 @@ ${similar.length ? `<div class="belt-thin" aria-hidden="true"></div>
 
   return layout({
     title: `${item.title} — ${SITE.name}`,
-    desc: item.story.slice(0, 180),
-    path: `/work/${item.slug}/`, body, ogImage: item.images[0]
+    desc: (item.story || `${item.title} — авторская керамика Алёны Бударовой.`).slice(0, 180),
+    path: `/work/${item.slug}/`, body, ogImage: item.images[0] || 'hero-tripods'
   });
 }
 
@@ -260,8 +254,8 @@ function pageAbout() {
 
 <section class="section-tight">
   <div class="wrap panel">
-    <figure class="panel-figure">
-      ${img('master-wide', 'Алёна Бударова за столом, перед ней уаскос и триподы', { ratio: '4/5', sizes: '(min-width:58rem) 45vw, 100vw', priority: true })}
+    <figure class="panel-figure panel-figure-square">
+      ${img('about-master', 'Алёна Бударова держит трипод, перед ней поющие сосуды и чаши', { ratio: '1/1', sizes: '(min-width:58rem) 45vw, 100vw', priority: true })}
     </figure>
     <div class="panel-body panel-clay">
       <p class="eyebrow">Своими словами</p>
@@ -275,30 +269,18 @@ function pageAbout() {
 <section class="wrap section">
   <div class="prose">
     <h2>Как это делается</h2>
-    <p>Рисунок наносится по сырой глине: линия за линией, инструментом с тонким кончиком. Ошибиться можно, отменить — нет.</p>
-    <p>Перед тем как расписывать партию, я делаю пробники: десятки маленьких образцов с разными глазурями. После обжига цвет получается не тем, каким был в банке, и пробники — единственный способ увидеть это заранее.</p>
-    <p>Потом печь. Чаши стоят в ней в два этажа, и до открытия никогда не знаешь точно, что выйдет. Поэтому две одинаковые вещи не получаются, даже если очень стараться.</p>
-
+    <p class="plain">Сознание мастера — это фильтр, который выделяет из окружающего мира особенные звуки, тени, образы, чувства и формирует идею, которую остаётся только воплотить в керамике.</p>
+    <p>Технологический процесс выстроен с учётом свойств материалов: всё в своё время, без спешки, ни раньше и ни позже.</p>
+    <p>Безопасные качественные материалы, профессиональная печь для обжига.</p>
   </div>
 </section>
 
 <section class="wrap section-tight">
   <div class="duo">
-    <figure>${img('process-raw', 'Партия несформованных триподов сохнет на доске перед обжигом', { ratio: '3/4', sizes: '(min-width:52rem) 45vw, 100vw' })}
-      <figcaption>Партия сохнет перед обжигом: цвет ещё ничего не значит.</figcaption></figure>
-    <figure>${img('process-hands', 'Рука мастера процарапывает рисунок на сырой тарелке', { ratio: '3/4', sizes: '(min-width:52rem) 45vw, 100vw' })}
-      <figcaption>Линия за линией, отменить нельзя.</figcaption></figure>
-  </div>
-</section>
-
-<section class="wrap section">
-  <div class="prose">
-    <h2>Откуда индейцы</h2>
-    <p>Триподы майя, уаскос инков, фигуры в головных уборах — это не стилизация ради стилизации. У каждой формы есть своя история, и мне интересно её продолжать.</p>
-
-    <h2>Что можно заказать</h2>
-    <p class="plain">Часть работ рождается из чужой задумки: присылают референс, фотографию из музея, набросок или просто рассказывают, что хочется. Дальше обсуждаем форму, роспись и размер — и я леплю.</p>
-    <p style="margin-top:1.5rem"><a class="btn btn-solid" href="${url('/contacts/')}">Обсудить заказ</a></p>
+    <figure>${img('process-raw', 'Партия триподов сохнет на доске перед обжигом', { ratio: '1/1', sizes: '(min-width:52rem) 45vw, 100vw' })}
+      <figcaption>Партия триподов перед началом декорирования.</figcaption></figure>
+    <figure>${img('process-decor', 'Руки мастера держат трипод с процарапанным орнаментом, рядом инструмент и кисть', { ratio: '1/1', sizes: '(min-width:52rem) 45vw, 100vw' })}
+      <figcaption>Работа с декором: линия за линией, отменить нельзя.</figcaption></figure>
   </div>
 </section>
 <div class="belt" aria-hidden="true"></div>
@@ -306,8 +288,8 @@ ${contactsBlock()}`;
 
   return layout({
     title: 'О мастере — ' + SITE.name,
-    desc: 'Алёна Бударова — художник-керамист из Краснодара, основатель изостудии «Кисть и Перо». Как делается роспись по сырой глине и что можно заказать.',
-    path: '/about/', body, ogImage: 'master-wide'
+    desc: 'Алёна Бударова — художник-керамист из Краснодара, основатель изостудии «Кисть и Перо». Как рождается идея и как делается роспись по сырой глине.',
+    path: '/about/', body, ogImage: 'about-master'
   });
 }
 
@@ -323,8 +305,8 @@ function pageMeetings() {
 <span data-cta-sentinel aria-hidden="true"></span>
 <section class="wrap about-page">
   <p class="eyebrow">Встречи</p>
-  <h1 class="h-section">Мастер-классы и какао-церемонии</h1>
-  <p class="about-lead">Занятия в студии «Кисть и Перо» в Краснодаре и какао-церемонии с авторскими триподами.</p>
+  <h1 class="h-section">Мастер-классы в студии</h1>
+  <p class="about-lead">Занятия по керамике в изостудии «Кисть и Перо» в Краснодаре — для детей и взрослых.</p>
 </section>
 
 <section class="section-tight">
@@ -336,7 +318,6 @@ function pageMeetings() {
       <p class="eyebrow">Что бывает</p>
       <ul class="meet-list">
         <li>Мастер-классы по керамике для детей и взрослых — в студии</li>
-        <li>Какао-церемонии с авторскими триподами</li>
         <li>Даты и запись — в Telegram и MAX</li>
       </ul>
       <a class="btn btn-light" href="${SITE.tg}">Написать про занятие</a>
@@ -356,7 +337,7 @@ ${contactsBlock()}`;
 
   return layout({
     title: 'Встречи — ' + SITE.name,
-    desc: 'Мастер-классы по керамике для детей и взрослых в Краснодаре и какао-церемонии с авторскими триподами.',
+    desc: 'Мастер-классы по керамике для детей и взрослых в изостудии «Кисть и Перо» в Краснодаре.',
     path: '/meetings/', body, ogImage: 'meetings'
   });
 }
@@ -389,21 +370,40 @@ ${contactsBlock()}`;
   });
 }
 
+/** Блок истории: строка — абзац; {h} — подзаголовок; {callout} — выделенная мысль;
+ *  {cards} — нумерованные карточки. */
+function storyBlock(b) {
+  if (typeof b === 'string') return `<p>${esc(b)}</p>`;
+  if (b.h) return `<h2 class="article-h">${esc(b.h)}</h2>`;
+  if (b.callout) return `<aside class="article-callout"><p>${esc(b.callout)}</p></aside>`;
+  if (b.cards) return `<ol class="numbered">
+      ${b.cards.map((c) => `<li class="numbered-item">
+        <span class="numbered-n" aria-hidden="true">${esc(c.n)}</span>
+        <span class="numbered-text"><b>${esc(c.t)}</b><span>${esc(c.p)}</span></span>
+      </li>`).join('\n      ')}
+    </ol>`;
+  return '';
+}
+
 function pageStory(story) {
   const body = `
 <span data-cta-sentinel aria-hidden="true"></span>
-<article class="wrap article">
-  <div class="article-head">
-    <p class="eyebrow">Истории</p>
-    <h1>${esc(story.title)}</h1>
-    <p class="article-lead">${esc(story.lead)}</p>
+<article class="article">
+  <div class="article-hero">
+    <figure class="article-cover">
+      ${img(story.cover, story.title, { ratio: '3/2', sizes: '100vw', priority: true })}
+    </figure>
+    <div class="article-head">
+      <p class="eyebrow">Истории</p>
+      <h1>${esc(story.title)}</h1>
+      <p class="article-lead">${esc(story.lead)}</p>
+    </div>
   </div>
-  <figure class="article-cover">
-    ${img(story.cover, story.title, { ratio: '3/2', sizes: '(min-width:76rem) 76rem, 100vw', priority: true })}
-  </figure>
-  <div class="article-body">
-    ${story.body.map((p) => `<p>${esc(p)}</p>`).join('\n    ')}
-    <p><a class="article-back" href="${url('/stories/')}">← Все истории</a></p>
+  <div class="wrap">
+    <div class="article-body">
+      ${story.body.map(storyBlock).join('\n      ')}
+      <p><a class="article-back" href="${url('/stories/')}">← Все истории</a></p>
+    </div>
   </div>
 </article>
 <div class="belt" aria-hidden="true"></div>
@@ -420,12 +420,13 @@ ${contactsBlock()}`;
 function pageContacts() {
   const faq = [
     ['Как купить?', 'Напишите в Telegram или MAX либо позвоните. Скажите, какая работа нужна — договоримся об оплате и отправке. Корзины и оплаты на сайте нет: каждая вещь в одном экземпляре, проще обсудить лично.'],
-    ['Сколько стоит?', 'Триподы — 1500 ₽ за чашу, есть на 200 и 400 мл. По остальным работам цену называю в переписке: они все разного размера и сложности.'],
+    ['Сколько стоит?', 'Триподы — 1500 ₽ за чашу, объёмы от 150 до 400 мл. Триподы с объёмным декором — 2000 ₽. Мхариумы — от 1000 до 2000 ₽, блюда и тарелки — 3000 ₽. По остальным работам цену называю в переписке.'],
     ['Как отправляете?', 'Почтой России, СДЭК или Ozon — как вам удобнее. Доставка не входит в стоимость работы и оплачивается отдельно.'],
     ['Можно забрать самому?', 'Да, в Краснодаре. Напишите, договоримся о месте и времени.'],
     ['Упаковка не разобьётся?', 'Керамику упаковываю в коробку с бумажным наполнителем.'],
     ['Можно заказать свою вещь?', 'Да. Присылайте референс, фотографию или просто опишите идею — обсудим форму, роспись и размер.'],
-    ['Что если работа уже продана?', 'Напишите: повторить один в один не получится, каждая вещь уникальна, но сделаю похожую.']
+    ['Что если работа уже продана?', 'Напишите: повторить один в один не получится, каждая вещь уникальна, но сделаю похожую.'],
+    ['Из этого можно пить и есть?', 'Внутренняя поверхность и край покрыты глазурью, допущенной к контакту с пищевыми продуктами. При этом изделия имеют декоративно-сувенирный характер и не являются посудой.']
   ];
 
   const body = `

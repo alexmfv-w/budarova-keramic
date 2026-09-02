@@ -40,8 +40,8 @@ const SITE = {
 const CATEGORIES = {
   tripod:   { label: 'Триподы',  note: 'чаши на трёх ножках для какао' },
   mharium:  { label: 'Мхариумы', note: 'керамика с живым или стабилизированным мхом' },
-  interior: { label: 'Интерьер', note: 'зеркала, подсвечники, горшки, посуда' },
-  uasko:    { label: 'Уаскос',   note: 'свистящие сосуды по доколумбовым образцам' }
+  interior: { label: 'Интерьер', note: 'зеркала, блюда, тарелки, светильники' },
+  uasko:    { label: 'Уаскос',   note: 'поющие сосуды' }
 };
 const AVAIL = {
   in_stock: 'В наличии',
@@ -167,13 +167,17 @@ ${body}
 /* ── карточка работы для сетки ── */
 function card(item) {
   const price = item.price ? `${item.price} ₽` : 'цена по запросу';
-  const badge = item.availability === 'sold'
-    ? '<span class="badge badge-sold">продано</span>'
-    : (item.featured ? '<span class="badge">новое</span>' : '');
+  const badge = item.coming
+    ? '<span class="badge badge-soon">скоро</span>'
+    : item.availability === 'sold'
+      ? '<span class="badge badge-sold">продано</span>'
+      : (item.featured ? '<span class="badge">новое</span>' : '');
   const meta = item.meta || item.dimensions || '';
   return `<a class="card" href="${url('/work/' + item.slug + '/')}" data-cat="${item.category}">
   ${badge}
-  ${img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw' })}
+  ${item.images.length
+    ? img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw' })
+    : '<div class="photo-soon"><span>Фото скоро</span></div>'}
   <span class="card-body">
     <span class="card-title">${esc(item.title)}</span>
     ${meta ? `<span class="card-meta">${esc(meta)}</span>` : ''}
