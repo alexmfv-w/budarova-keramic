@@ -31,6 +31,7 @@
   /* ── Фильтры каталога ── */
   var chips = document.querySelectorAll('[data-filter]');
   var cards = document.querySelectorAll('[data-cat]');
+  var sections = document.querySelectorAll('[data-section]');
   var empty = document.querySelector('.catalog-empty');
   if (chips.length && cards.length) {
     var apply = function (value) {
@@ -39,6 +40,11 @@
         var match = value === 'all' || card.dataset.cat === value;
         card.hidden = !match;
         if (match) shown++;
+      });
+      /* в каталоге работы разложены по направлениям: прячем секцию целиком,
+         иначе от отфильтрованного направления остаётся пустой заголовок */
+      sections.forEach(function (section) {
+        section.hidden = !(value === 'all' || section.dataset.section === value);
       });
       if (empty) empty.hidden = shown > 0;
     };

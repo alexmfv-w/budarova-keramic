@@ -37,11 +37,35 @@ const SITE = {
   vkStudio: 'https://vk.ru/kistpero'
 };
 
+/** Направления каталога.
+ *  story — история, которая объясняет направление: каталог даёт на неё ссылку,
+ *  чтобы переход «с главной в работы» не терял контекст (правка цикла 03.09.2026).
+ *  fallback — короткая подпись для работ, у которых нет собственного описания. */
 const CATEGORIES = {
-  tripod:   { label: 'Триподы',  note: 'чаши на трёх ножках для какао' },
-  mharium:  { label: 'Мхариумы', note: 'керамика с живым или стабилизированным мхом' },
-  interior: { label: 'Интерьер', note: 'зеркала, блюда, тарелки, светильники' },
-  uasko:    { label: 'Уаскос',   note: 'поющие сосуды' }
+  tripod: {
+    label: 'Триподы', note: 'чаши на трёх ножках для какао',
+    blurb: 'Чаши на трёх ножках — форма, которую майя придумали для какао. Объёмы от 150 до 400 мл, роспись у каждой своя.',
+    story: 'pri-chyom-tut-indeytsy-i-kakao', storyTitle: 'При чём тут индейцы и какао',
+    fallback: 'Чаша на трёх ножках для какао. Ручная работа, роспись по сырой глине.'
+  },
+  mharium: {
+    label: 'Мхариумы', note: 'керамика с живым или стабилизированным мхом',
+    blurb: 'Керамический сосуд, внутри которого живёт мох. Не требует полива, выдерживает полное высыхание и зеленеет снова через двадцать минут после опрыскивания.',
+    story: 'mharium', storyTitle: '5 причин завести мхариум',
+    fallback: 'Керамический сосуд со мхом. Мох входит в подарок.'
+  },
+  uasko: {
+    label: 'Уаскос', note: 'поющие сосуды',
+    blurb: 'Поющие сосуды инков: звук рождается, когда вода внутри вытесняет воздух. Делаю их редко и почти всегда под заказ.',
+    story: 'sosudy-kotorye-poyut', storyTitle: 'Сосуды, которые поют',
+    fallback: 'Поющий сосуд. Звучание — в канале MAX и в Telegram.'
+  },
+  interior: {
+    label: 'Интерьер', note: 'зеркала, блюда, тарелки, светильники',
+    blurb: 'Зеркала в керамической раме, блюда, тарелки и светильники. Такие вещи делаются в одном экземпляре и обычно уезжают сразу.',
+    story: 'kak-rozhdaetsya-rospis', storyTitle: 'Как рождается роспись',
+    fallback: 'Интерьерная керамика ручной работы. Вещь в одном экземпляре.'
+  }
 };
 const AVAIL = {
   in_stock: 'В наличии',
@@ -111,14 +135,16 @@ function layout({ title, desc, path, body, ogImage, cls = '' }) {
 <body${cls ? ` class="${cls}"` : ''}>
 <a class="visually-hidden" href="#main">Перейти к содержанию</a>
 
-<header class="wrap topbar">
-  <a class="brand" href="${url('/')}">Бударова<i>·</i>керамика</a>
-  <nav class="nav" aria-label="Основная навигация">
+<div class="topbar-dock">
+  <header class="wrap topbar">
+    <a class="brand" href="${url('/')}">Бударова<i>·</i>керамика</a>
+    <nav class="nav" aria-label="Основная навигация">
       ${navLinks()}
-  </nav>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
-</header>
-<div class="belt" aria-hidden="true"></div>
+    </nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel">Меню</button>
+  </header>
+  <div class="belt" aria-hidden="true"></div>
+</div>
 
 <div class="nav-panel" id="nav-panel" hidden>
   <div class="nav-panel-top"><button class="nav-toggle" type="button" data-close>Закрыть</button></div>
@@ -172,19 +198,52 @@ function card(item) {
     : item.availability === 'sold'
       ? '<span class="badge badge-sold">продано</span>'
       : (item.featured ? '<span class="badge">новое</span>' : '');
-  const meta = item.meta || item.dimensions || '';
+  const meta = [item.meta, item.dimensions].filter(Boolean).join(' · ');
   return `<a class="card" href="${url('/work/' + item.slug + '/')}" data-cat="${item.category}">
   ${badge}
-  ${item.images.length
-    ? img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:64rem) 22vw, (min-width:44rem) 30vw, 45vw' })
-    : '<div class="photo-soon"><span>Фото скоро</span></div>'}
+  <span class="card-shot">
+    ${item.images.length
+      ? img(item.images[0], item.title, { ratio: '4/5', sizes: '(min-width:64rem) 26vw, (min-width:44rem) 30vw, 45vw' })
+      : '<div class="photo-soon"><span>Фото скоро</span></div>'}
+    ${item.images.length > 1 ? `<span class="card-count">${item.images.length} фото</span>` : ''}
+  </span>
   <span class="card-body">
     <span class="card-title">${esc(item.title)}</span>
     ${meta ? `<span class="card-meta">${esc(meta)}</span>` : ''}
-    <span class="card-price">${esc(item.availability === 'sold' ? 'под заказ' : price)}</span>
+    <span class="card-foot">
+      <span class="card-price${item.availability === 'sold' ? ' is-sold' : ''}">${esc(item.availability === 'sold' ? 'повторю похожую' : price)}</span>
+      <span class="card-go" aria-hidden="true">Смотреть →</span>
+    </span>
   </span>
 </a>`;
 }
+
+/** Секция каталога: направление, его смысл, ссылка на историю и сетка работ. */
+function catalogSection(key, list, { level = 2 } = {}) {
+  const c = CATEGORIES[key];
+  const H = `h${level}`;
+  return `<section class="cat-section" data-section="${key}" aria-labelledby="sec-${key}">
+  <div class="cat-head">
+    <div>
+      <p class="eyebrow">Направление</p>
+      <${H} class="h-block" id="sec-${key}">${c.label}</${H}>
+      <p class="cat-blurb">${c.blurb}</p>
+      <a class="link-more" href="${url('/stories/' + c.story + '/')}">${c.storyTitle} →</a>
+    </div>
+    <p class="cat-count">${list.length} ${plural(list.length, 'работа', 'работы', 'работ')}</p>
+  </div>
+  <div class="grid">
+    ${list.map(card).join('\n    ')}
+  </div>
+</section>`;
+}
+
+const plural = (n, one, few, many) => {
+  const n10 = n % 10, n100 = n % 100;
+  if (n10 === 1 && n100 !== 11) return one;
+  if (n10 >= 2 && n10 <= 4 && (n100 < 12 || n100 > 14)) return few;
+  return many;
+};
 
 function chips(active = 'all') {
   const all = [['all', 'Все'], ...Object.entries(CATEGORIES).map(([k, v]) => [k, v.label])];
@@ -210,4 +269,4 @@ function contactsBlock() {
 </section>`;
 }
 
-export { SITE, CATEGORIES, AVAIL, read, json, esc, url, write, img, layout, card, chips, contactsBlock, shipNote, OUT, ROOT };
+export { SITE, CATEGORIES, AVAIL, read, json, esc, url, write, img, layout, card, catalogSection, chips, contactsBlock, shipNote, OUT, ROOT };

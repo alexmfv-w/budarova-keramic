@@ -1,10 +1,14 @@
 /* ── База ── */
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+/* якоря не должны уезжать под залипающую шапку */
+:target{scroll-margin-top:6rem}
 body{
   margin:0; background:var(--cream); color:var(--brown);
   font:400 1.0625rem/1.65 "Golos Text",system-ui,-apple-system,sans-serif;
-  overflow-x:hidden;
+  /* clip, а не hidden: hidden сделал бы body контейнером прокрутки
+     и залипающая шапка (position:sticky) перестала бы работать */
+  overflow-x:clip;
 }
 img{max-width:100%; height:auto; display:block}
 a{color:inherit}

@@ -76,7 +76,8 @@
         "mharium-vityaz-01",
         "mharium-vityaz-02",
         "mharium-vityaz-03",
-        "mharium-vityaz-04"
+        "mharium-vityaz-04",
+        "mharium-vityaz-05"
       ]
     },
     {
@@ -158,7 +159,9 @@
         "mharium-drevo-02",
         "mharium-drevo-03",
         "mharium-drevo-04",
-        "mharium-drevo-05"
+        "mharium-drevo-05",
+        "mharium-drevo-06",
+        "mharium-drevo-07"
       ]
     },
     {
@@ -174,7 +177,7 @@
       "price": null,
       "availability": "on_order",
       "featured": true,
-      "food_note": true,
+      "food_note": false,
       "images": [
         "uasko-ptitsa-01"
       ]
@@ -192,7 +195,7 @@
       "price": 7000,
       "availability": "on_order",
       "featured": true,
-      "food_note": true,
+      "food_note": false,
       "images": [
         "uasko-zver-01"
       ]
@@ -213,7 +216,8 @@
       "food_note": false,
       "images": [
         "zerkalo-bestiariy-01",
-        "zerkalo-bestiariy-02"
+        "zerkalo-bestiariy-02",
+        "zerkalo-bestiariy-03"
       ]
     },
     {
@@ -259,7 +263,7 @@
       "category": "interior",
       "meta": "блюдо",
       "dimensions": "диаметр 25 см",
-      "story": "Блюдо с вороном на мосту. Рисунок процарапан по сырой глине и расписан по одному элементу.",
+      "story": null,
       "ritual_usage": null,
       "materials": null,
       "care": null,
@@ -280,7 +284,7 @@
       "category": "interior",
       "meta": "блюдо",
       "dimensions": "диаметр 25 см",
-      "story": "Тот же сюжет в светлой гамме: белый ворон на мосту.",
+      "story": null,
       "ritual_usage": null,
       "materials": null,
       "care": null,
@@ -301,7 +305,7 @@
       "category": "interior",
       "meta": "тарелка",
       "dimensions": "диаметр 23 см, высота 5 см",
-      "story": "Тарелка с саламандрой.",
+      "story": null,
       "ritual_usage": null,
       "materials": null,
       "care": null,
@@ -332,24 +336,6 @@
       "images": [
         "bolshaya-ryba-01",
         "bolshaya-ryba-02"
-      ]
-    },
-    {
-      "slug": "tarelki-ryby",
-      "title": "Тарелки «Рыбы»",
-      "category": "interior",
-      "meta": "тарелки",
-      "dimensions": null,
-      "story": null,
-      "ritual_usage": null,
-      "materials": null,
-      "care": null,
-      "price": null,
-      "availability": "in_stock",
-      "featured": false,
-      "food_note": true,
-      "images": [
-        "tarelki-ryby-01"
       ]
     }
   ]

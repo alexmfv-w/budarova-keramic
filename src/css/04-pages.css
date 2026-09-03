@@ -8,6 +8,10 @@
 }
 .hero-body h1{font-size:clamp(2rem,8.5vw,3.5rem)}
 .hero-body h1 mark{background:none; color:var(--clay)}
+.hero-kicker{
+  margin-top:.75rem; font-family:Unbounded,sans-serif; font-weight:400;
+  font-size:clamp(1.0625rem,3.6vw,1.375rem); color:var(--brown-soft);
+}
 .hero-sub{margin-top:1.125rem; color:var(--brown-soft); max-width:38ch}
 .hero-actions{display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1.75rem}
 @media (min-width:58rem){
@@ -41,6 +45,7 @@
 @media (min-width:52rem){ .sechead{grid-template-columns:1fr auto; align-items:end} }
 
 .section{padding-block:var(--step)}
+.section-head{padding-block:var(--step) 0}
 .section-tight{padding-block:0 var(--step)}
 
 /* ── КАТАЛОГ ── */
@@ -83,6 +88,7 @@
 .work-ritual{margin-top:1.75rem; padding:1.25rem; background:var(--paper); border-left:3px solid var(--ochre)}
 .work-ritual .eyebrow{margin-bottom:.5rem}
 .work-ship{margin-top:1.75rem; font-size:.9375rem; color:var(--brown-soft)}
+.work-more{margin-top:.5rem; padding-top:1rem; border-top:1px solid rgba(59,36,25,.15)}
 
 /* ── ИСТОРИИ ── */
 .stories-grid{display:grid; gap:2rem}
@@ -114,12 +120,42 @@
 }
 .article-body{max-width:38rem; margin-inline:auto}
 .article-body > p{margin-top:1.25rem; font-size:1.0625rem; line-height:1.7}
+/* первый абзац — вводный, крупнее остальных */
+.article-body > p:first-child{font-size:1.1875rem; line-height:1.6; color:var(--brown)}
 .article-h{
   font-size:clamp(1.25rem,4.5vw,1.625rem); margin-top:2.5rem;
   padding-top:1.5rem; border-top:2px solid var(--ochre);
 }
 .article-callout{
   margin:2rem 0 0; padding:1.5rem; background:var(--clay); color:var(--cream);
+}
+
+/* ── Боковая колонка истории: работы того же направления ── */
+.article-aside{margin-top:3rem; padding-top:1.5rem; border-top:2px solid var(--ochre)}
+.article-aside-h{font-size:1.25rem; margin-bottom:1rem}
+.minilist{list-style:none; padding:0; margin:0 0 1rem; display:grid; gap:.5rem}
+.minilist a{
+  display:grid; grid-template-columns:4.5rem 1fr; gap:.875rem; align-items:center;
+  padding:.5rem; background:var(--paper); text-decoration:none; min-height:44px;
+}
+.minilist a:hover{outline:2px solid var(--clay)}
+.minilist img{aspect-ratio:1/1; object-fit:cover; width:100%}
+.minilist b{display:block; font-weight:500; font-size:.9375rem; line-height:1.3}
+.minilist span span{display:block; margin-top:.25rem; font-size:.875rem; color:var(--clay); font-weight:600}
+
+/* На широком экране история перестаёт быть «мобильной полосой»:
+   текст держит комфортную меру, выделенные блоки шире, справа — колонка работ. */
+@media (min-width:64rem){
+  .article-grid{display:grid; grid-template-columns:minmax(0,1fr) 17rem; gap:0 4rem; align-items:start}
+  .article-body{max-width:none; margin-inline:0}
+  .article-body > p,
+  .article-body > .article-h{max-width:40rem}
+  .article-body > p{font-size:1.125rem}
+  .article-body > .article-h{margin-top:3.5rem}
+  .article-body > .numbered{grid-template-columns:1fr 1fr; gap:1.25rem}
+  .article-body > .article-callout{padding:2.5rem 3rem}
+  .article-aside{position:sticky; top:7rem; margin-top:0; border-top:none; padding-top:0}
+  .minilist{grid-template-columns:1fr}
 }
 .article-callout p{
   font-family:Unbounded,sans-serif; font-weight:400;

@@ -4,19 +4,37 @@
 
 **Адрес после публикации:** `https://alexmfv-w.github.io/budarova-keramic/`
 
-## Быстрый старт
+## Посмотреть сайт у себя
+
+Две команды из папки проекта:
 
 ```bash
-node tools/build.mjs                 # собрать сайт в docs/
-bash tools/build-images.sh           # пересобрать картинки (нужен cwebp)
+node tools/build.mjs      # собрать сайт в docs/
+node tools/serve.mjs      # открыть его в браузере
 ```
 
-Локальный просмотр — сайт живёт в подпапке `/budarova-keramic`, поэтому просто открыть файл не получится:
+Скрипт напечатает адрес — **http://localhost:8747/budarova-keramic/**. Остановить — `Ctrl+C`.
+Порт занят? Возьмите другой: `node tools/serve.mjs 8080`.
+
+Поправили текст в `data/*.json` или стили в `src/css/` — заново `node tools/build.mjs`
+и обновите страницу в браузере. Сервер перезапускать не надо, он раздаёт то, что лежит в `docs/`.
+
+Открыть `docs/index.html` двойным щелчком не выйдет: все ссылки на сайте начинаются
+с `/budarova-keramic/` (сайт живёт в подпапке — так устроен GitHub Pages), и браузер
+будет искать эту папку в корне диска. Получится страница без стилей и фотографий.
+Сервер подставляет папку правильно и показывает ровно то же, что будет после публикации.
+
+### Проверить, что ничего не отвалилось
 
 ```bash
-mkdir -p /tmp/preview && ln -sfn "$PWD/docs" /tmp/preview/budarova-keramic
-cd /tmp/preview && python3 -m http.server 8747
-# http://localhost:8747/budarova-keramic/
+python3 tools/verify.py   # 81 проверка: тексты, цены, состав каталога, ссылки, картинки
+```
+
+Нужен только Node — он уже стоит, раз собирается сайт. Для картинок дополнительно `cwebp`
+(`brew install webp`) и системный `sips`:
+
+```bash
+bash tools/build-images.sh           # мастер-копии -> WebP 480/960/1600
 ```
 
 ## Что где лежит
@@ -27,6 +45,8 @@ src/css/         стили, склеиваются в docs/css/site.css по а
 src/js/site.js   меню, фильтры, галерея, липкая кнопка связи — 95 строк
 tools/lib.mjs    настройки сайта, каркас страницы, повторяющиеся блоки
 tools/build.mjs  страницы и запуск сборки
+tools/serve.mjs  локальный просмотр: node tools/serve.mjs
+tools/verify.py  сверка собранного сайта с правками заказчика
 tools/build-images.sh   мастер-копии -> WebP 480/960/1600
 tools/make-masters.py   раскладывает исходные фото под имена слагов
 images/masters/  мастер-копии, 2000–3000 px

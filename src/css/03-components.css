@@ -21,8 +21,13 @@
 }
 .link-more:hover{text-decoration:underline}
 
-/* ── Шапка ── */
-.topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0}
+/* ── Шапка: едет вместе со страницей ── */
+.topbar-dock{
+  position:sticky; top:0; z-index:40; background:var(--cream);
+  box-shadow:0 4px 14px rgba(59,36,25,.10);
+}
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.75rem 0}
+@media (min-width:58rem){ .topbar{padding:1rem 0} }
 .brand{
   font-family:Unbounded,sans-serif; font-weight:600; font-size:1.0625rem;
   letter-spacing:-.01em; text-decoration:none;
@@ -66,12 +71,45 @@
 .card:hover,.card:focus-visible{transform:translateY(-4px)}
 .card[hidden]{display:none}
 .card img{width:100%; aspect-ratio:4/5; object-fit:cover}
-.card-body{padding:.875rem .875rem 1rem}
-.card-title{font-family:Unbounded,sans-serif; font-weight:400; font-size:.9375rem; line-height:1.3; display:block}
+.card-shot{position:relative; display:block}
+.card-count{
+  position:absolute; inset-block-end:.5rem; inset-inline-end:.5rem;
+  background:rgba(59,36,25,.72); color:var(--cream); font-size:.6875rem;
+  letter-spacing:.06em; padding:.25rem .45rem;
+}
+.card-body{padding:.875rem .875rem 1rem; display:flex; flex-direction:column; flex:1}
+.card-title{font-family:Unbounded,sans-serif; font-weight:400; font-size:1rem; line-height:1.3; display:block}
 .card-meta{display:block; margin-top:.5rem; font-size:.875rem; color:var(--brown-soft)}
-.card-price{display:block; margin-top:.25rem; font-weight:600; color:var(--clay)}
+.card-foot{
+  display:flex; align-items:baseline; justify-content:space-between; gap:.75rem;
+  margin-top:auto; padding-top:.75rem;
+}
+.card-price{display:block; font-weight:600; color:var(--clay); white-space:nowrap}
+/* у проданного цены нет: метка «продано» и так стоит на снимке,
+   а «под заказ» рядом с ней читалось как «ещё можно купить» */
+.card-price.is-sold{color:var(--brown-soft); font-weight:400; font-size:.9375rem}
+/* подсказка «Смотреть» только там, где есть настоящее наведение:
+   на телефоне она невидима, но отнимала ширину и ломала строку цены */
+.card-go{display:none}
+@media (hover:hover) and (min-width:64rem){
+  .card-go{display:block; font-size:.8125rem; color:var(--brown-soft); opacity:0; transition:opacity .18s}
+  .card:hover .card-go,.card:focus-visible .card-go{opacity:1}
+}
+
+/* ── Каталог по направлениям ── */
+.cat-section{padding-block:3rem 0}
+.cat-section[hidden]{display:none}
+.cat-head{display:grid; gap:.75rem; margin-bottom:1.75rem; padding-top:1.5rem; border-top:2px solid var(--ochre)}
+.cat-blurb{margin-top:.75rem; color:var(--brown-soft); max-width:52ch}
+.cat-head .link-more{margin-top:.25rem}
+.cat-count{font-size:.875rem; color:var(--brown-soft)}
+@media (min-width:52rem){
+  .cat-head{grid-template-columns:minmax(0,1fr) auto; align-items:start}
+  .cat-count{text-align:right; padding-top:.35rem}
+}
 .badge{
-  position:absolute; inset-block-start:.625rem; inset-inline-start:.625rem;
+  /* z-index обязателен: .card-shot тоже позиционирован и без него перекрывает метку */
+  position:absolute; z-index:2; inset-block-start:.625rem; inset-inline-start:.625rem;
   background:var(--ochre); color:var(--brown); font-size:.6875rem; font-weight:600;
   letter-spacing:.12em; text-transform:uppercase; padding:.3rem .5rem;
 }
@@ -89,6 +127,9 @@
 /* ── Лента «фото + текст» ── */
 .ribbon{display:grid; gap:0; background:var(--paper)}
 .ribbon img{width:100%; aspect-ratio:4/3; object-fit:cover}
+/* вертикальный кадр в горизонтальной рамке: держим кадр по верхней трети,
+   иначе центрирование срезает фигуре голову */
+.ribbon img.pos-high{object-position:50% 28%}
 .ribbon-body{padding:1.75rem 1.5rem 2rem}
 .ribbon p{margin-top:.875rem; color:var(--brown-soft); max-width:44ch}
 @media (min-width:52rem){
@@ -101,10 +142,19 @@
   margin-top:.75rem; padding-left:.875rem; border-left:3px solid var(--ochre);
   font-size:.9375rem; color:var(--brown-soft);
 }
+/* два выхода из блока направления: в каталог и в историю про него */
+.ribbon-links{display:flex; flex-wrap:wrap; align-items:center; gap:.25rem 1.5rem; margin-top:.5rem}
+.link-quiet{
+  display:inline-flex; align-items:center; min-height:44px;
+  font-size:.9375rem; color:var(--brown-soft); text-underline-offset:.25em;
+}
+.link-quiet:hover{color:var(--clay)}
 
 /* ── Цветная плашка внахлёст на фото ── */
 .panel-figure{margin:0}
 .panel-figure img{width:100%; aspect-ratio:4/5; object-fit:cover}
+/* исходник выше рамки 4:5 — центрирование срезает мастеру макушку */
+.panel-figure img.pos-top{object-position:50% 12%}
 .panel-body{position:relative; margin:-3rem 1.25rem 0; padding:1.75rem 1.5rem 2rem}
 .panel-clay{background:var(--clay); color:var(--cream)}
 .panel-clay .eyebrow{color:var(--ochre)}

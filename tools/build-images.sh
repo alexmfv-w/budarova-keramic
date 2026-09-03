@@ -30,5 +30,13 @@ for src in "$SRC"/*.jpg; do
   done
 done
 
-echo "готово: сгенерировано $n файлов"
+# убираем осиротевшие: мастер-копию удалили, а webp остался и попал бы в docs/
+removed=0
+for webp in "$OUT"/*.webp; do
+  [ -e "$webp" ] || continue
+  base="$(basename "$webp" .webp)"; base="${base%-*}"
+  if [ ! -f "$SRC/$base.jpg" ]; then rm -f "$webp"; removed=$((removed+1)); fi
+done
+
+echo "готово: сгенерировано $n файлов, удалено осиротевших $removed"
 echo "вес docs/img: $(du -sh "$OUT" | cut -f1)"

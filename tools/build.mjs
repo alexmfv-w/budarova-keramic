@@ -9,7 +9,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, existsSync
 import { join } from 'node:path';
 import {
   SITE, CATEGORIES, AVAIL, json, esc, url, write, img,
-  layout, card, chips, contactsBlock, shipNote, OUT, ROOT
+  layout, card, catalogSection, chips, contactsBlock, shipNote, OUT, ROOT
 } from './lib.mjs';
 
 const catalog = json('data/catalog.json');
@@ -22,13 +22,16 @@ function pageHome() {
   const featured = items.filter((i) => i.featured).slice(0, 8);
 
   const ribbon = (o) => `<section class="ribbon${o.flip ? ' flip' : ''}" aria-labelledby="${o.id}">
-  ${img(o.image, o.alt, { ratio: '4/3', sizes: '(min-width:52rem) 50vw, 100vw' })}
+  ${img(o.image, o.alt, { ratio: '4/3', sizes: '(min-width:52rem) 50vw, 100vw', cls: o.imgCls })}
   <div class="ribbon-body">
     <p class="eyebrow">${o.eyebrow}</p>
     <h2 class="h-block" id="${o.id}">${o.title}</h2>
     <p>${o.text}</p>
     ${o.note ? `<p class="note-ochre">${o.note}</p>` : ''}
-    <a class="link-more" href="${o.href}">${o.link} →</a>
+    <p class="ribbon-links">
+      <a class="link-more" href="${o.href}">${o.link} →</a>
+      <a class="link-quiet" href="${url('/stories/' + CATEGORIES[o.cat].story + '/')}">${CATEGORIES[o.cat].storyTitle}</a>
+    </p>
   </div>
 </section>`;
 
@@ -41,7 +44,8 @@ function pageHome() {
   </figure>
   <div class="hero-body">
     <p class="eyebrow">Алёна Бударова · Краснодар</p>
-    <h1>Керамика, которую <mark>делали до нас</mark></h1>
+    <h1>Керамика, прошедшая <mark>сквозь тысячелетия</mark></h1>
+    <p class="hero-kicker">Возрождение традиций</p>
     <p class="hero-sub">Триподы майя для какао, сосуды со мхом, зеркала в керамической раме. Каждая вещь в одном экземпляре — второй такой не будет.</p>
     <div class="hero-actions">
       <a class="btn btn-solid" href="${url('/catalog/')}">Смотреть работы</a>
@@ -59,29 +63,30 @@ function pageHome() {
 <div class="belt" aria-hidden="true"></div>
 
 ${ribbon({
-    id: 'dir-tripod', flip: true, image: 'dir-tripods',
-    alt: 'Трипод с треугольным орнаментом охрой и красным',
+    id: 'dir-tripod', cat: 'tripod', flip: true, image: 'dir-tripods',
+    alt: 'Партия триподов с росписью: красные, охряные и монохромные чаши на трёх ножках',
     eyebrow: 'Триподы', title: 'Посуда для напитка богов',
-    text: 'Бобы мололи, разводили холодной водой и взбивали до пены. Полихромные чаши на трёх ножках были роскошью — их ставили на пирах и в ритуалах. Объёмы от 150 до 400 мл.',
+    text: 'Какао-бобы мололи, разводили холодной водой и взбивали до пены. Полихромные чаши на трёх ножках были роскошью — их ставили на пирах и в ритуалах. Объёмы от 150 до 400 мл.',
     href: url('/catalog/?c=tripod'), link: 'Смотреть триподы'
   })}
 <div class="belt-thin" aria-hidden="true"></div>
 
 ${ribbon({
-    id: 'dir-mharium', image: 'dir-mhariums',
-    alt: 'Два керамических мхариума со мхом на блюдцах',
+    id: 'dir-mharium', cat: 'mharium', image: 'dir-mhariums', imgCls: 'pos-high',
+    alt: 'Мхариум с фигурой и ярко-зелёным мхом внутри керамической чаши',
     eyebrow: 'Мхариумы', title: 'Керамика и мох',
-    text: 'Сосуд, в котором живёт мох — живой или стабилизированный. Один и тот же мхариум работает подсвечником, курительницей и ёмкостью для украшений. Многофункциональный индеец.',
+    text: 'Сосуд, в котором живёт мох — живой или стабилизированный. Полить забыть невозможно: мох выдерживает полное высыхание и зеленеет снова через двадцать минут после опрыскивания.',
+    note: 'Мох входит в подарок к каждому мхариуму.',
     href: url('/catalog/?c=mharium'), link: 'Смотреть мхариумы'
   })}
 <div class="belt-thin" aria-hidden="true"></div>
 
 ${ribbon({
-    id: 'dir-interior', flip: true, image: 'dir-interior',
+    id: 'dir-interior', cat: 'interior', flip: true, image: 'dir-interior',
     alt: 'Зеркало в керамической раме с ягуаром',
-    eyebrow: 'Интерьер', title: 'Зеркала, подсвечники, горшки',
+    eyebrow: 'Интерьер', title: 'Зеркала, блюда, светильники',
     text: 'Рама собирается из отдельных плиток: ягуар, волна, листья — рисунок процарапан по сырой глине. Такие вещи делаются в одном экземпляре и обычно уезжают сразу.',
-    href: url('/catalog/?c=interior'), link: 'Смотреть интерьер'
+    href: url('/catalog/?c=interior'), link: 'Смотреть работы'
   })}
 <div class="belt" aria-hidden="true"></div>
 
@@ -105,13 +110,14 @@ ${ribbon({
 <section class="section" aria-labelledby="about-h">
   <div class="wrap panel">
     <figure class="panel-figure">
-      ${img('master-portrait', 'Алёна Бударова за столом со своими работами', { ratio: '4/5', sizes: '(min-width:58rem) 45vw, 100vw' })}
+      ${img('master-portrait', 'Алёна Бударова за столом со своими работами', { ratio: '4/5', sizes: '(min-width:58rem) 45vw, 100vw', cls: 'pos-top' })}
     </figure>
     <div class="panel-body panel-clay">
       <p class="eyebrow">О мастере</p>
       <h2 class="h-block" id="about-h">Алёна Бударова</h2>
       <p class="panel-quote">«Совершенству в керамике нет предела»</p>
-      <p class="txt">Художник-керамист из Краснодара. Основала изостудию «Кисть и Перо», где ведёт занятия для детей и взрослых. Керамика — отдельная линия работы: триподы, мхариумы, зеркала, посуда.</p>
+      <p class="txt">Сознание мастера — это фильтр, который выделяет из окружающего мира особенные звуки, тени, образы, чувства и формирует идею, которую остаётся только воплотить в керамике.</p>
+      <p class="txt">Художник-керамист из Краснодара, основатель изостудии «Кисть и Перо».</p>
       <a class="btn btn-light" href="${url('/about/')}">Подробнее о мастере</a>
     </div>
   </div>
@@ -143,17 +149,20 @@ ${contactsBlock()}`;
 function pageCatalog() {
   const body = `
 <span data-cta-sentinel aria-hidden="true"></span>
-<section class="wrap section" aria-labelledby="cat-h">
+<section class="wrap section-head" aria-labelledby="cat-h">
   <p class="eyebrow">Каталог</p>
   <h1 class="h-section" id="cat-h">Работы</h1>
   <p class="catalog-intro">Этнические мотивы, современные материалы, гармония формы и орнамента, воплощённые в керамике по воле мастера.</p>
   <p class="catalog-intro">Каждая работа только в одном экземпляре. Похожие, в одном стиле, но двух одинаковых не найти. Уточняйте — вышлю фото конкретно того, что есть на данный момент. Возможны авторские повторы купленных работ.</p>
   <div style="margin-top:2rem">${chips()}</div>
-  <div class="grid">
-    ${items.map(card).join('\n    ')}
-  </div>
-  <p class="catalog-empty" hidden>В этом направлении сейчас ничего нет. Напишите — расскажу, что готовится.</p>
 </section>
+
+<div class="wrap">
+  ${Object.keys(CATEGORIES)
+    .map((key) => catalogSection(key, items.filter((i) => i.category === key)))
+    .join('\n  ')}
+  <p class="catalog-empty" hidden>В этом направлении сейчас ничего нет. Напишите — расскажу, что готовится.</p>
+</div>
 <div class="belt" aria-hidden="true"></div>
 ${contactsBlock()}`;
 
@@ -208,7 +217,7 @@ function pageWork(item) {
       <h1>${esc(item.title)}</h1>
       <p class="work-price">${esc(sold ? 'Продано' : price)}</p>
       <p class="work-status${sold ? ' is-sold' : ''}">${AVAIL[item.availability]}</p>
-      ${item.story ? `<p class="work-story">${esc(item.story)}</p>` : ''}
+      <p class="work-story">${esc(item.story || cat.fallback)}</p>
       <div class="work-cta">
         <a class="btn btn-solid" href="${SITE.tg}">${sold ? 'Сделать похожую' : 'Написать о работе'}</a>
         <a class="btn" href="tel:${SITE.tel}">Позвонить</a>
@@ -223,6 +232,7 @@ function pageWork(item) {
       </div>` : ''}
       ${item.food_note ? `<p class="work-note">Внутренняя поверхность и край покрыты глазурью, допущенной к контакту с пищевыми продуктами. При этом изделие имеет декоративно-сувенирный характер и не является посудой.</p>` : ''}
       <p class="work-ship">${shipNote}</p>
+      <p class="work-more"><a class="link-more" href="${url('/stories/' + cat.story + '/')}">${cat.storyTitle} →</a></p>
     </div>
   </div>
 </section>
@@ -349,7 +359,7 @@ function pageStories() {
 <section class="wrap section">
   <p class="eyebrow">Истории</p>
   <h1 class="h-section">Про керамику, какао и индейцев</h1>
-  <p class="catalog-intro">Откуда взялись триподы, почему уаскос свистят, как делается роспись и по какому рецепту варить какао.</p>
+  <p class="catalog-intro">Откуда взялись триподы, почему уаскос поют, как рождается роспись и по какому рецепту варить какао.</p>
   <div class="stories-grid" style="margin-top:2.5rem">
     ${stories.items.map((s) => `<a class="story-card" href="${url('/stories/' + s.slug + '/')}">
       ${img(s.cover, s.title, { ratio: '3/2', sizes: '(min-width:64rem) 30vw, (min-width:44rem) 45vw, 100vw' })}
@@ -385,7 +395,29 @@ function storyBlock(b) {
   return '';
 }
 
+/** Направление, к которому относится история: истории и каталог должны
+ *  ссылаться друг на друга, иначе переход «с главной в работы» теряет контекст. */
+function storyCategory(slug) {
+  const found = Object.keys(CATEGORIES).find((k) => CATEGORIES[k].story === slug);
+  return found || 'tripod';   // рецепт какао — тоже про триподы
+}
+
 function pageStory(story) {
+  const catKey = storyCategory(story.slug);
+  const cat = CATEGORIES[catKey];
+  const picks = items.filter((i) => i.category === catKey && i.images.length).slice(0, 3);
+  const aside = `<aside class="article-aside" aria-labelledby="aside-h">
+      <p class="eyebrow">${cat.label}</p>
+      <h2 class="article-aside-h" id="aside-h">Работы из этой истории</h2>
+      <ul class="minilist">
+        ${picks.map((i) => `<li><a href="${url('/work/' + i.slug + '/')}">
+          ${img(i.images[0], i.title, { ratio: '1/1', sizes: '5rem' })}
+          <span><b>${esc(i.title)}</b><span>${esc(i.price ? i.price + ' \u20BD' : 'цена по запросу')}</span></span>
+        </a></li>`).join('\n        ')}
+      </ul>
+      <a class="link-more" href="${url('/catalog/?c=' + catKey)}">Все работы направления →</a>
+    </aside>`;
+
   const body = `
 <span data-cta-sentinel aria-hidden="true"></span>
 <article class="article">
@@ -399,11 +431,12 @@ function pageStory(story) {
       <p class="article-lead">${esc(story.lead)}</p>
     </div>
   </div>
-  <div class="wrap">
+  <div class="wrap article-grid">
     <div class="article-body">
       ${story.body.map(storyBlock).join('\n      ')}
       <p><a class="article-back" href="${url('/stories/')}">← Все истории</a></p>
     </div>
+    ${aside}
   </div>
 </article>
 <div class="belt" aria-hidden="true"></div>
