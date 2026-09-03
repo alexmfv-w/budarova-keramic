@@ -6,3 +6,7 @@ old_useful_materials/
 # Системное
 .DS_Store
 node_modules/
+
+# Мастер-копии, выведенные из работы (старые фото удалённых позиций).
+# 17 МБ, пересобираются из old_useful_materials скриптами tools/make-masters*.py.
+images/masters/_unused/
